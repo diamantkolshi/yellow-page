@@ -2,18 +2,16 @@ require "rails_helper"
 
 feature "Admin dashboard" do
   scenario "visitor is admin" do
-    admin = create(:admin, email: "admin@example.com", password: "password")
-
-    visit rails_admin_path(as: admin)
+    visit rails_admin_path(as: create(:admin))
 
     expect(page).to have_content("Site Administration")
   end
 
   scenario "visitor is not an admin user" do
-    user = create(:user)
+    visit rails_admin_path(as: create(:user))
 
-    visit rails_admin_path(as: user)
-
-    expect(page).to have_content("You are not permitted to view this page")
+    expect(page).to have_content(
+      "You need to sign in or sign up before continuing."
+    )
   end
 end

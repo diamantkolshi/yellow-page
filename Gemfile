@@ -22,7 +22,8 @@ gem "sass-rails", "~> 5.0"
 gem "simple_form"
 gem "title"
 gem "uglifier"
-gem "clearance"
+gem "devise"
+gem "rails_admin"
 
 group :development do
   gem "quiet_assets"
