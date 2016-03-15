@@ -1,22 +1,42 @@
-ENV["RAILS_ENV"] = "test"
-
-require File.expand_path("../../config/environment", __FILE__)
-abort("DATABASE_URL environment variable is set") if ENV["DATABASE_URL"]
-
-require "rspec/rails"
-
-Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |file| require file }
-
-module Features
-  # Extend this module in spec/support/features/*.rb
-  include Formulaic::Dsl
+if ENV["CODECLIMATE_REPO_TOKEN"]
+  require "codeclimate-test-reporter"
+  CodeClimate::TestReporter.configure do |config|
+    config.logger.level = Logger::WARN
+  end
+  CodeClimate::TestReporter.start
 end
 
-RSpec.configure do |config|
-  config.include Features, type: :feature
-  config.infer_base_class_for_anonymous_controllers = false
-  config.infer_spec_type_from_file_location!
-  config.use_transactional_fixtures = false
+if ENV["COVERAGE"]
+  require "simplecov"
+  SimpleCov.start "rails"
+end
+
+ENV["RAILS_ENV"] ||= "test"
+require "spec_helper"
+require File.expand_path("../../config/environment", __FILE__)
+require "clearance/rspec"
+require "rspec/rails"
+require "webmock/rspec"
+require "shoulda/matchers"
+
+Dir[File.expand_path(File.join(File.dirname(__FILE__),"support","**","*.rb"))].each {|f| require f}
+
+Delayed::Worker.delay_jobs = false
+
+Capybara.javascript_driver = :webkit
+Capybara.configure do |config|
+  config.match = :prefer_exact
+  config.ignore_hidden_elements = true
 end
 
 ActiveRecord::Migration.maintain_test_schema!
+
+RSpec.configure do |config|
+  config.use_transactional_fixtures = false
+  config.use_instantiated_fixtures  = false
+  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+
+  config.include FactoryGirl::Syntax::Methods
+
+  config.infer_spec_type_from_file_location!
+end
