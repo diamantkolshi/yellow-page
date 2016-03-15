@@ -1,2 +1,90 @@
-<h1>Businesses#index</h1>
-<p>Find me in app/views/businesses/index.html.erb</p>
+ <!-- Navigation -->   
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">All businesses
+                    <small>*****</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a>
+                    </li>
+                    <li class="active">All businesses</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+     
+        <!-- Project One -->
+        <% @businesses.each do |business| %>
+            <div class="row">   
+                <div class="col-md-7">
+                 <% if business.logo.blank? %>
+                    <%= image_tag "logos/businesses/nologo.png", width: "100%",:class => "img-responsive"%>
+                 <% else %>
+                  <%= image_tag "logos/businesses/"+business.name+"/"+business.logo, width: "100%",:class => "img-responsive"%>
+                 <% end %>
+                </div>
+                <div class="col-md-5">
+                    <h3><%= business.name %></h3>
+                    <h4><% business.categories.each do |category| %>
+                        | <%= category.name %> |
+                        <% end %>
+                    </h4>
+                    <p><%= business.description %></p>
+                    <%= link_to "View", '#' ,class: "btn btn-primary" %>
+                </div>
+            </div>
+            <!-- /.row -->
+            
+            <hr>
+        <% end %>
+
+        
+
+        <!-- Pagination -->
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li>
+                        <a href="#">&laquo;</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li>
+                        <a href="#">5</a>
+                    </li>
+                    <li>
+                        <a href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+
+    </div>

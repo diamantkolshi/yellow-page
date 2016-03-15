@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  mount RailsAdmin::Engine => "/admin", as: "rails_admin"
+  # mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   
-  get 'businesses/index'
   root 'homepages#index', as: "homepage"
+ 
+  get 'businesses' => "businesses#index"
+  get 'businesses/:id' => "businesses#show"
 
 end
