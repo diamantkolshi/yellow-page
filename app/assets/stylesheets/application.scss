@@ -1,3 +1,16 @@
-@charset "utf-8";
 
-@import "normalize-rails";
+@import "style";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+
+
+.image{
+  height:80%;
+  width:100%;
+}
+
+#browse{
+  margin-left:23%;
+}
