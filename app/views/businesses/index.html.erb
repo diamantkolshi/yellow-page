@@ -23,19 +23,19 @@
             <div class="row">   
                 <div class="col-md-7">
                  <% if business.logo.blank? %>
-                    <%= image_tag "logos/businesses/nologo.png", width: "100%",:class => "img-responsive"%>
+                   <%= image_tag "logos/businesses/nologo.png", width: "100%",:class => "img-responsive" %>
                  <% else %>
-                  <%= image_tag "logos/businesses/"+business.name+"/"+business.logo, width: "100%",:class => "img-responsive"%>
+                   <%= image_tag "businesses/"+business.name+"/"+business.logo, width: "80%",:class => "img-thumbnail"%>
                  <% end %>
                 </div>
                 <div class="col-md-5">
-                    <h3><%= business.name %></h3>
+                    <h3><%= link_to business.name, business_path(business.id) %></h3>
                     <h4><% business.categories.each do |category| %>
                         | <%= category.name %> |
                         <% end %>
                     </h4>
                     <p><%= business.description %></p>
-                    <%= link_to "View",  ,class: "btn btn-primary" %>
+                    <%= link_to "View", "#" ,class: "btn btn-primary" %>
                 </div>
             </div>
             <!-- /.row -->

@@ -8,4 +8,18 @@ class Business < ActiveRecord::Base
   has_many :videos
   has_many :products
   has_many :working_days
+  
+  after_create  :create_dir
+  after_destroy :destroy_dir
+
+  def create_dir
+     Dir.mkdir("#{Rails.root}/app/assets/images/businesses/#{self.name}-#{self.id}")
+  end
+
+  def destroy_dir
+  	 Dir.rmdir("#{Rails.root}/app/assets/images/businesses/#{self.name}-#{self.id}")
+  end
+
 end
+
+

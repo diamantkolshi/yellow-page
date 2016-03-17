@@ -15,6 +15,7 @@
        <p class="navbar-text "><a href="#" class="navbar-link">Home Improvment</a></p> 
        <p class="navbar-text "><a href="#" class="navbar-link">Health & Wellnes</a></p> 
        <p class="navbar-text "><a href="#" class="navbar-link">Attorneys</a></p> 
+       <p class="navbar-text "><%= link_to "All businesses", businesses_path, class: "navbar-link"%></p>
     </div>
   </div>
   
@@ -78,10 +79,10 @@
                  <% if business.logo.blank? %>
                     <%= image_tag "logos/businesses/nologo.png", width: "100%",:class => "img-responsive"%>
                  <% else %>
-                  <%= image_tag "logos/businesses/"+business.name+"/"+business.logo, width: "100%",:class => "img-responsive"%>
+                  <%= image_tag "logos/businesses/"+business.name+"/"+business.logo,:class => "img-responsive"%>
                  <% end %>
                     <div class="caption">
-                        <h3><%= business.name %><br>
+                        <h3><%= link_to business.name, business_path(business.id) %><br>
                             <small></small>
                         </h3>
                         <p><%= business.description %></p>

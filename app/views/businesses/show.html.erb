@@ -24,17 +24,23 @@
             </div>
             <!-- Contact Details Column -->
             <div class="col-md-4">
-                <h3>Business Details</h3>
+                <h3><%= @business.name %></h3>
                 <p>
                     3481 Melrose Place<br>Beverly Hills, CA 90210<br>
                 </p>
+                <% @business.phones.each do |phone| %>
                 <p><i class="fa fa-phone"></i> 
-                    <abbr title="Phone">P</abbr>: (123) 456-7890</p>
+                    <abbr title="Phone"><%= phone.phone_type %></abbr>: <%= phone.phone_number %></p>
+                <% end %>
                 <p><i class="fa fa-envelope-o"></i> 
-                    <abbr title="Email">E</abbr>: <a href="mailto:name@example.com">name@example.com</a>
+                    : <a href="<%= @business.email %>"><%= @business.email %></a>
                 </p>
                 <p><i class="fa fa-clock-o"></i> 
-                    <abbr title="Hours">H</abbr>Today: </p>
+                    <abbr title="Hours"> Today</abbr>: Active 
+                </p>
+                <p><i class="fa fa-clock-o"></i> 
+                    <abbr title="Hours">Tomorrow</abbr>: 10:00 - 22:00  
+                </p>
                 <ul class="list-unstyled list-inline list-social-icons">
                     <li>
                         <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
@@ -77,13 +83,7 @@
                                 </a>
                                 <a href="<%= image_path("cover.jpg") %>" title="Banana" data-gallery>
                                     <%= image_tag "cover.jpg", class: "image_gallery"%>
-                                </a>  
-                                <a href="<%= image_path("cover.jpg") %>" title="Banana" data-gallery>
-                                    <%= image_tag "cover.jpg", class: "image_gallery"%>
-                                </a> 
-                                <a href="https://www.youtube.com/watch?v=E8sF5RTKK-w" title="Banana" data-gallery>
-                                    <%= image_tag "cover.jpg", class: "image_gallery"%>
-                                </a>                                  
+                                </a>                               
                             </div>  
                         </div>
                     </div>
@@ -115,6 +115,9 @@
         <br>
 
         <hr>
+
+
+
 
         <div class="row">
             <div class="col-lg-12">
@@ -242,7 +245,6 @@
 
 
 
-
         <div id="blueimp-gallery" class="blueimp-gallery">
             <!-- The container for the modal slides -->
             <div class="slides"></div>
@@ -276,3 +278,6 @@
                 </div>
             </div>
         </div>
+
+
+

@@ -33,9 +33,9 @@ country = Country.create(name: "Kosova")
 city = country.cities.build(name: "Prishtina", prefix: 10000)
 city.save
 
-business = Business.create(name: "Pizza", logo: "logopizza.jpg",  description: "This is a enterprises wich sold some pizza, different name as pizza restaurant")
-business1 = Business.create(name: "BMW", logo: "logobmw.jpg",  description: "This is a enterprises wich sold some bmw, different name as Baki automobile")
-business2 = Business.create(name: "Delfini", logo: "logodelfini.jpg",  description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
+business = Business.create(name: "Pizza", logo: "logopizza.jpg", email: "pizza@hotmail.com", description: "This is a enterprises wich sold some pizza, different name as pizza restaurant")
+business1 = Business.create(name: "BMW", logo: "logobmw.jpg", email: "bmw24@live.com", description: "This is a enterprises wich sold some bmw, different name as Baki automobile")
+business2 = Business.create(name: "Delfini", logo: "logodelfini.jpg", email: "restaurant.delfini@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
 
 
 # -----------------------------------------------------------
