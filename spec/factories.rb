@@ -5,6 +5,10 @@ FactoryGirl.define do
 
     factory :admin do
       admin true
-    end
+    end      
   end
+
+  factory :business do
+     name "Mozaix"
+   end
 end

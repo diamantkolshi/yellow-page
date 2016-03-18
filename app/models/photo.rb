@@ -1,3 +1,6 @@
-class Photo < ActiveRecord::Base
-  belongs_to :business
+class Photo < ActiveRecord::Base  
+
+  mount_uploader :source, PhotoUploader 
+
+  belongs_to :business 
 end

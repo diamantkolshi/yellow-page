@@ -16,4 +16,15 @@ describe Business do
   context "validations" do
   
   end
+
+  describe "#create_dir" do 
+    before(:each) do
+      @business = FactoryGirl.create(:business, name: "Mozaix")
+    end
+
+    it "create directrorium for this business" do
+       # expect(File).to exist("#{Rails.root}/app/assets/images/businesses/Mozaix-1") 
+    end
+  end
+
 end

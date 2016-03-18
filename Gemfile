@@ -27,6 +27,7 @@ gem "rails_admin"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'faker'
 gem "rails_panel"
+gem 'carrierwave'
 
 group :development do
   gem "quiet_assets"
