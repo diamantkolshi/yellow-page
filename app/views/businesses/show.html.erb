@@ -20,7 +20,11 @@
         <div class="row">
             <!-- Map Column -->
             <div class="col-md-7">
-                <%= image_tag "logos/businesses/nologo.png", :class => "img-responsive"%>  
+                <% if @business.logo.blank? %>
+                    <%= image_tag "nologo.png", width: "100%",:class => "img-responsive"%>
+                 <% else %>
+                  <%= image_tag @business.logo_url, :class => "img-responsive"%>                  
+                 <% end %>
             </div>
             <!-- Contact Details Column -->
             <div class="col-md-4">
@@ -78,12 +82,11 @@
                     <div class="tab-pane fade active in" id="service-one"><br><br>
                         <div class="row">                            
                             <div id="links" class="text-center" >
-                                <a href="<%= image_path("logos/businesses/nologo.png") %>" title="Banana" data-gallery>
-                                    <%= image_tag "cover.jpg", class: "image_gallery"%>
-                                </a>
-                                <a href="<%= image_path("cover.jpg") %>" title="Banana" data-gallery>
-                                    <%= image_tag "cover.jpg", class: "image_gallery"%>
-                                </a>                               
+                                <% @business.photos.each do |photo| %>
+                                    <a href="<%= image_path photo.source_url %>" title="Banana" data-gallery>
+                                        <%= image_tag photo.source_url, class: "image_gallery"%>
+                                    </a>
+                                <% end %>                              
                             </div>  
                         </div>
                     </div>

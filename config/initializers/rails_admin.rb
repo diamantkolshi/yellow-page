@@ -4,8 +4,10 @@ RailsAdmin.config do |config|
   end
   config.current_user_method(&:current_user)
   
+  config.excluded_models = [ BusinessCategory, BusinessCity ]
 
-  config.model 'Business' do 
+
+  config.model 'Business' do
     exclude_fields :business_categories
     exclude_fields :business_cities
     exclude_fields :phones
@@ -18,6 +20,8 @@ RailsAdmin.config do |config|
     exclude_fields :payment_mathod
     exclude_fields :products
   end
+
+
   ## == Cancan ==
   # config.authorize_with :cancan
 

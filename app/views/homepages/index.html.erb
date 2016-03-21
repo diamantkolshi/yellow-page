@@ -28,7 +28,7 @@
             <div class="col-lg-12">
                 <h1 class="page-header">
                     Welcome to Business
-                </h1>
+                </h1> 
             </div>
             <div class="col-md-4">
                 <div class="panel panel-default">
@@ -77,9 +77,9 @@
             <div class="col-md-4 text-center">
                 <div class="thumbnail">
                  <% if business.logo.blank? %>
-                    <%= image_tag "logos/businesses/nologo.png", width: "100%",:class => "img-responsive"%>
+                    <%= image_tag "nologo.png", width: "100%",:class => "img-responsive"%>
                  <% else %>
-                  <%= image_tag "logos/businesses/"+business.name+"/"+business.logo,:class => "img-responsive"%>
+                  <%= image_tag business.logo_url, :class => "img-responsive"%>                  
                  <% end %>
                     <div class="caption">
                         <h3><%= link_to business.name, business_path(business.id) %><br>

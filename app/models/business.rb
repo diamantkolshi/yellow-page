@@ -1,4 +1,6 @@
 class Business < ActiveRecord::Base
+  mount_uploader :logo, LogoUploader 
+
   has_many :business_cities
   has_many :business_categories
   has_many :cities, :through => :business_cities
@@ -14,12 +16,10 @@ class Business < ActiveRecord::Base
   after_create  :create_dir
   after_destroy :destroy_dir
 
-  attr_accessor :dir_path
 
   def create_dir
-     dir_path = "#{Rails.public_path}/uploads/#{self.class.to_s.pluralize.downcase}/#{self.id}"
-     FileUtils.mkdir_p(dir_path + "/photos")
-     FileUtils.mkdir_p(dir_path + "/videos")
+     # dir_path = "#{Rails.public_path}/uploads/#{self.class.to_s.pluralize.downcase}/#{self.id}"
+     # FileUtils.mkdir_p(dir_path)
   end
 
   def destroy_dir

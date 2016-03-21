@@ -5,4 +5,8 @@ describe Category do
     it { should have_many(:business_categories) }
     it { should have_many(:businesses).through(:business_categories) } 
   end
+
+    context "validations" do
+     it { should validate_presence_of :name }
+  end
 end
