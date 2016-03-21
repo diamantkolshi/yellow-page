@@ -18,7 +18,15 @@ RailsAdmin.config do |config|
     exclude_fields :zip_code
     exclude_fields :establidhed
     exclude_fields :payment_mathod
-    exclude_fields :products
+    exclude_fields :business_products
+  end
+
+  config.model 'Day' do 
+    exclude_fields :working_days  
+  end
+
+  config.model 'Product' do 
+    exclude_fields :business_products  
   end
 
 

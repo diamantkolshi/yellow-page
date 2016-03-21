@@ -1,4 +1,13 @@
 FactoryGirl.define do
+  factory :business_product do
+    
+  end
+  factory :type do
+    
+  end
+  factory :day do
+    
+  end
   factory :user do
     email "test@example.com"
     password "password"

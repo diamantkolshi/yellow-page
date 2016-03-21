@@ -3,6 +3,7 @@ require "rails_helper"
 describe WorkingDay do
   context "associations" do
     it { should belong_to(:business) }
+    it { should belong_to(:day) }
   end
 
   context "validations" do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315020728) do
+ActiveRecord::Schema.define(version: 20160321140729) do
 
   create_table "business_categories", force: :cascade do |t|
     t.integer  "business_id"
@@ -32,6 +32,19 @@ ActiveRecord::Schema.define(version: 20160315020728) do
 
   add_index "business_cities", ["business_id"], name: "index_business_cities_on_business_id"
   add_index "business_cities", ["city_id"], name: "index_business_cities_on_city_id"
+
+  create_table "business_products", force: :cascade do |t|
+    t.integer  "business_id"
+    t.integer  "product_id"
+    t.string   "description"
+    t.decimal  "price"
+    t.string   "image"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "business_products", ["business_id"], name: "index_business_products_on_business_id"
+  add_index "business_products", ["product_id"], name: "index_business_products_on_product_id"
 
   create_table "businesses", force: :cascade do |t|
     t.string   "name"
@@ -73,6 +86,12 @@ ActiveRecord::Schema.define(version: 20160315020728) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "days", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "phones", force: :cascade do |t|
     t.integer  "business_id"
     t.string   "phone_type"
@@ -94,16 +113,19 @@ ActiveRecord::Schema.define(version: 20160315020728) do
   add_index "photos", ["business_id"], name: "index_photos_on_business_id"
 
   create_table "products", force: :cascade do |t|
-    t.integer  "business_id"
-    t.string   "title"
-    t.text     "description"
-    t.string   "image"
-    t.decimal  "price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "type_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "products", ["business_id"], name: "index_products_on_business_id"
+  add_index "products", ["type_id"], name: "index_products_on_type_id"
+
+  create_table "types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -134,7 +156,7 @@ ActiveRecord::Schema.define(version: 20160315020728) do
 
   create_table "working_days", force: :cascade do |t|
     t.integer  "business_id"
-    t.string   "day"
+    t.integer  "day_id"
     t.time     "open"
     t.time     "close"
     t.datetime "created_at",  null: false
@@ -142,5 +164,6 @@ ActiveRecord::Schema.define(version: 20160315020728) do
   end
 
   add_index "working_days", ["business_id"], name: "index_working_days_on_business_id"
+  add_index "working_days", ["day_id"], name: "index_working_days_on_day_id"
 
 end
