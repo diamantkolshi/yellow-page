@@ -1,0 +1,46 @@
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Map Column -->
+            <div class="col-md-7">
+                <% if @business.logo.blank? %>
+                    <%= image_tag "nologo.png", width: "100%",:class => "img-responsive"%>
+                 <% else %>
+                  <%= image_tag @business.logo_url, :class => "img-responsive"%>                  
+                 <% end %>
+            </div>
+            <!-- Contact Details Column -->
+            <div class="col-md-4">
+                <h3><%= @business.name %></h3>
+                <p>
+                    3481 Melrose Place<br>Beverly Hills, CA 90210<br>
+                </p>
+                <% @business.phones.each do |phone| %>
+                <p><i class="fa fa-phone"></i> 
+                    <abbr title="Phone"><%= phone.phone_type %></abbr>: <%= phone.phone_number %></p>
+                <% end %>
+                <p><i class="fa fa-envelope-o"></i> 
+                    : <a href="<%= @business.email %>"><%= @business.email %></a>
+                </p>
+                <p><i class="fa fa-clock-o"></i> 
+                    <abbr title="Hours"> Today</abbr>: Active 
+                </p>
+                <p><i class="fa fa-clock-o"></i> 
+                    <abbr title="Hours">Tomorrow</abbr>: 10:00 - 22:00  
+                </p>
+                <ul class="list-unstyled list-inline list-social-icons">
+                    <li>
+                        <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-linkedin-square fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-twitter-square fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
+                    </li>
+                </ul>   
+            </div>
+        </div>
+        <!-- /.row -->

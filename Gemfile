@@ -28,6 +28,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'faker'
 gem "rails_panel"
 gem 'carrierwave'
+gem 'will_paginate', '~> 3.0.5'
+
 
 group :development do
   gem "quiet_assets"

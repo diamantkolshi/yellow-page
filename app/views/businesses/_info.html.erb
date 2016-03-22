@@ -1,0 +1,74 @@
+    <div class="container" style="padding:50px;">
+        <div class="msg"><span class="glyphicon glyphicon glyphicon-ok"></span> Regular hours</div>
+            <% @business.working_days.each do |work| %>
+            <div class="row">
+                 <div class="col-md-2"></div>
+                <% if work.day.name == Time.now.strftime("%A") %>
+                    <div class="col-md-4">
+                        <div class="msg msg-success text-center"><%= work.day.name %></div>            
+                    </div>
+                    <div class="col-md-2">
+                        <div class="msg msg-info text-center"><%= work.open.strftime("%H:%M") %></div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="msg msg-danger text-center"></span><%= work.close.strftime("%H:%M") %></div>
+                    </div>                
+                <% else %>
+                    <div class="col-md-4">
+                        <div class="msg text-center"><%= work.day.name %></div>            
+                    </div>
+                    <div class="col-md-2">
+                        <div class="msg text-center"><%= work.open.strftime("%H:%M") %></div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="msg text-center"></span><%= work.close.strftime("%H:%M") %></div>
+                    </div>  
+                <% end %>
+                  </div>
+                <% end %><br><br>
+        <div class="msg"><span class="glyphicon glyphicon glyphicon-ok"></span>Manu</div>
+            <% @types.each do |type| %>
+            <div class="row">              
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="panel manu">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-center"><%= type.name %></h3>
+                        </div>
+                        <% @products.where(type_id: type.id).each do |product| %>
+                        <table class="table table-condensed">
+                            <tr>
+                              <td class="active text-center" style="width:300px"><%= product.name %></td>
+                              <td class="success text-center"><%= @business_products.where(product_id: product.id).first.price %> <i class="fa fa-eur"></i> </td>
+                            </tr>   
+                        </table>
+                        <% end %>
+                    </div>
+                </div>                
+           </div>
+        <% end %>
+    </div>
+     
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel-group" id="accordion" >
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Reating & Review</a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse">
+                        <div class="panel-body alert"> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+ 
+
