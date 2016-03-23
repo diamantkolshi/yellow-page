@@ -22,6 +22,7 @@ FactoryGirl.define do
   end
 
   factory :video do
+    business_id 1
+    source "adasdas"
   end
-  
 end

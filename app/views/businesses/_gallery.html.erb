@@ -12,25 +12,33 @@
 
                 <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade active in" id="service-one"><br><br>
-                        <div class="row">                            
+                        <div class="row"> 
+                          <% unless @business.videos.blank? %>                         
                             <div id="links" class="text-center" >
                                 <% @business.photos.each do |photo| %>
                                     <a href="<%= image_path photo.source_url %>" title="Banana" data-gallery>
                                         <%= image_tag photo.source_url, class: "image_gallery"%>
                                     </a>
                                 <% end %>                                                              
-                            </div>  
+                            </div>
+                          <% else %>
+                           <div class="alert alert-info text-center" role="alert"><%= @business.name %> has no photos</div>
+                          <% end %>  
                         </div>
                     </div>
                     <div class="tab-pane fade" id="service-two"><br><br>
-                        <!-- Blog Post Row -->
+                        <!-- Blog Post Video -->
                         <div class="row">
+                        <% unless @business.videos.blank? %>
                             <!-- <div class="col-md-2"></div>  -->
                             <div class="col-md-4"> 
                             <% @business.videos.each do |video| %>                               
-                                <iframe width="560" height="315" src="<%= video.source %>" frameborder="0" allowfullscreen></iframe> 
+                                <iframe width="360" height="215" src="<%= video.source %>" frameborder="0" allowfullscreen></iframe> 
                             <% end %>
                             </div>
+                        <% else %>
+                           <div class="alert alert-info text-center" role="alert"><%= @business.name %> has no videos</div>
+                        <% end %>
                         </div>
                     </div>                   
                 </div>

@@ -10,6 +10,14 @@ describe Video do
     it { should validate_presence_of :source }
   end
 
-  describe "#embed" do 
+  describe "#embed" do
+    before(:each) do
+        business = FactoryGirl.create(:business, name: "Mozaix")
+        @video = FactoryGirl.create(:video, business_id: business.id,source: "https://www.youtube.com/watch?v=LW8p2F3gpMo")
+    end
+
+    it "change watch to embed" do
+       expect(@video.source).to eq("//www.youtube.com/embed/LW8p2F3gpMo")
+    end
   end
 end
