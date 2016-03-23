@@ -28,7 +28,9 @@ RailsAdmin.config do |config|
   config.model 'Product' do 
     exclude_fields :business_products  
   end
-
+  
+  config.model 'Phone' do 
+  end
 
   ## == Cancan ==
   # config.authorize_with :cancan

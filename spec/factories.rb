@@ -19,5 +19,9 @@ FactoryGirl.define do
 
   factory :business do
      name "Mozaix"
-   end
+  end
+
+  factory :video do
+  end
+  
 end
