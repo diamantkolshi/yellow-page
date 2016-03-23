@@ -34,8 +34,8 @@ RailsAdmin.config do |config|
   end
   
 
-  ## == Cancan ==
-  # config.authorize_with :cancan
+  # == Cancan ==
+  config.authorize_with :cancan
 
   ## == Pundit ==
   # config.authorize_with :pundit

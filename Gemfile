@@ -29,6 +29,7 @@ gem 'faker'
 gem "rails_panel"
 gem 'carrierwave'
 gem 'will_paginate', '~> 3.0.5'
+gem 'cancancan'
 
 
 group :development do
