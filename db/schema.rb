@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321140729) do
+ActiveRecord::Schema.define(version: 20160325160036) do
 
   create_table "business_categories", force: :cascade do |t|
     t.integer  "business_id"
@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 20160321140729) do
 
   add_index "business_products", ["business_id"], name: "index_business_products_on_business_id"
   add_index "business_products", ["product_id"], name: "index_business_products_on_product_id"
+
+  create_table "business_suggests", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "tel"
+    t.text     "message"
+    t.boolean  "confirm",    default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "businesses", force: :cascade do |t|
     t.string   "name"
@@ -120,6 +130,16 @@ ActiveRecord::Schema.define(version: 20160321140729) do
   end
 
   add_index "products", ["type_id"], name: "index_products_on_type_id"
+
+  create_table "suggest_businesses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "tel"
+    t.text     "message"
+    t.boolean  "confirm",    default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "types", force: :cascade do |t|
     t.string   "name"

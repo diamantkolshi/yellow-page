@@ -15,8 +15,14 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-         <li><button type="button" class="btn btn-primary navbar-btn" style="margin-right:10px;" data-toggle="modal" data-target="#SugestModal">
-              Sugest business</button></li>
+          <li>
+            <%= link_to  new_suggest_business_path, class: "btn"  do %>
+             <i class="fa fa-plus"></i> 
+               Suggest Business
+             <% end %>
+          </li>
+         <!-- <li><button type="button" class="btn btn-primary navbar-btn" style="margin-right:10px;" data-toggle="modal" data-target="#SugestModal"> -->
+              <!-- Sugest business</button></li> -->
       <% if !current_user %>
         <li><button type="button" class="btn btn-default navbar-btn" style="margin-right:10px;" data-toggle="modal" data-target="#SigninModal">Sign in</button></li>
       <% else %>
@@ -42,7 +48,7 @@
 
 
      <%= render "layouts/sign_in" %>
-     <%= render "layouts/suggest_business" %>
+     <%# render "layouts/suggest_business" %>
 
 
 
