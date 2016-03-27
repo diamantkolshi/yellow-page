@@ -1,0 +1,24 @@
+ 
+    <%= simple_form_for(current_user, :url => { controller: 'profiles', action: 'update', id: current_user.id}) do |f|  %>    
+        <%= f.error_notification %>
+         <% if current_user.errors.any? %>
+          <div id="error_explanation">
+           <ul>
+              <% @current_user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+           <% end %>
+
+                                  
+      <div class="">
+         <%= f.input_field :logo, autofocus: true, :class => 'form-control no-border' %>
+         <%= f.input_field :email, required: true, autofocus: true, :class => 'form-control no-border' %>
+      </div><hr>                                   
+      
+      <%= f.button :submit, "Update", class: "form-control btn-primary" %>
+    <%end%>
+ 
+
+                 

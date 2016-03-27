@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to main_app.root_path, :alert => exception.message
+    redirect_to main_app.profiles_path, :alert => exception.message
   end
+
+  # def user_is_admin?
+  #   if current_user.admin?
+  #     redirect_to rails_admin_path
+  #   end 
+  # end
 end
