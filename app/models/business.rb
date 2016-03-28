@@ -1,6 +1,8 @@
 class Business < ActiveRecord::Base
   mount_uploader :logo, LogoUploader 
 
+  acts_as_commontable
+
   has_many :business_cities
   has_many :business_categories
   has_many :business_products

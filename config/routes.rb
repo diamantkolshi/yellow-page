@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'upload_photos/index'
 
+  mount Commontator::Engine => '/commontator'
+
   # devise_for :users
 
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"

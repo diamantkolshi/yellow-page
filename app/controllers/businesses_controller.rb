@@ -7,6 +7,7 @@ class BusinessesController < ApplicationController
 
   def show 
   	@business = Business.find(params[:id])
+  	commontator_thread_show(@business)
   	@types = Type.all
   	@products = @business.products.all
   	@business_products = BusinessProduct.all

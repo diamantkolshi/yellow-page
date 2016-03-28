@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.2.4"
+ruby "2.3.0"
 
 gem "autoprefixer-rails"
 gem "bourbon", "~> 4.2.0"
@@ -30,6 +30,7 @@ gem "rails_panel"
 gem 'carrierwave'
 gem 'will_paginate', '~> 3.0.5'
 gem 'cancancan'
+gem 'commontator', '~> 4.11.1'
 
 
 group :development do
