@@ -1,52 +1,56 @@
 <html>
-<head>
-    <!--[if IE]>
+    <head>
+        <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-</head>
-<body>
- 
-   <%= render "layouts/header"%>
-
-   <br><br>
-    <div class="container">
-        <section style="padding-bottom: 50px; padding-top: 50px;">
-            <div class="row">
-                <div class="col-md-4">
-                    <% if current_user.logo.blank? %>
-                        <%= image_tag 	"noprofile1.png", width: "100%",class: "img-rounded"%>
-                    <% else %>
+    </head>
+    <body>
+        
+        <%= render "layouts/header"%>
+        <br><br>
+        <div class="container">
+            <section style="padding-bottom: 50px; padding-top: 50px;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <% if current_user.logo.blank? %>
+                        <%= image_tag   "noprofile1.png", width: "100%",class: "img-rounded"%>
+                        <% else %>
                         <%= image_tag   current_user.logo_url, width: "100%",class: "img-rounded"%>
-                    <% end %>
-                    <%= render "update_user"%>
-                    <br /><br/>
-                </div>
-                <div class="col-md-8">                 
-                    <ul id="myTab" class="nav nav-tabs nav-justified">
-                        <li class="active"><a href="#service-one" data-toggle="tab"><i class="fa fa-comment"></i> Reviews</a>
+                        <% end %>
+                        <%= render "update_user"%>
+                        <br /><br/>
+                    </div>
+                    <div class="col-md-8">
+                        <ul id="myTab" class="nav nav-tabs nav-justified">
+                            <li class="active"><a href="#service-one" data-toggle="tab"><i class="fa fa-comment"></i> Reviews</a>
                         </li>
                         <li class=""><a href="#service-two" data-toggle="tab"><i class="fa fa-star"></i> Ratings</a>
-                        </li>
-                    </ul>
-
+                    </li>
+                </ul>
                 <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade active in" id="service-one">
-                        <h4>Reviews</h4>                        
+                        <div class="panel panel-default alert alert-warning alert-dismissible">
+                          <div class="panel-body">
+                                 <% @user_creator.each do |comment| %>
+                                <h3><%= Business.find(comment.thread.commontable_id).name %></h3>
+                                <h5><%= Business.find(comment.thread.commontable_id).email %></h5>
+                                <p><%= comment.body %></p>
+                                <hr>
+                                <% end %>
+                          </div>
+                        </div>                     
                     </div>
                     <div class="tab-pane fade" id="service-two">
-                        <h4>Ratings</h4>                        
+                        <h4>Reviews</h4>
                     </div>
                 </div>
             </div>
-        </div>
-     <!-- ROW END -->
-
-
+            </div>
+            
+            
+            <!-- ROW END -->
         </section>
         <!-- SECTION END -->
         <%= render "layouts/footer" %>
-    </div>
-  
-</body>
-
+    </body>
 </html>

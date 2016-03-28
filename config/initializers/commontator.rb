@@ -64,8 +64,13 @@ Commontator.configure do |config|
   #            view.commontator_gravatar_image_tag(
   #              user, 1, :s => 60, :d => 'mm') }
   config.user_avatar_proc = lambda { |user, view|
-                                     view.commontator_gravatar_image_tag(
-                                       user, 1, :s => 60, :d => 'mm') }
+                                      if user.logo.blank?
+                                        view.commontator_gravatar_image_tag(
+                                        user, 1, :s => 60, :d => 'mm') 
+                                      else  
+                                        view.image_tag(user.logo_url, width: "80", height: "80") 
+                                      end
+                                   }
 
   # user_email_proc
   # Type: Proc
@@ -119,7 +124,7 @@ Commontator.configure do |config|
   #   :l (only if it's the latest comment)
   #   :n (never)
   # Default: :l
-  config.comment_editing = :n
+  config.comment_editing = :a
 
   # comment_deletion
   # Type: Symbol

@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
   # before_action :user_is_admin?
   
   def index
+    @user_creator =  Commontator::Comment.where(creator_id: current_user.id) 
   end
 
   def update

@@ -1,5 +1,6 @@
 class Business < ActiveRecord::Base
   mount_uploader :logo, LogoUploader 
+  ratyrate_rateable "rate"
 
   acts_as_commontable
 
