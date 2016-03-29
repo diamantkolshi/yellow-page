@@ -4,7 +4,7 @@ RailsAdmin.config do |config|
   end
   config.current_user_method(&:current_user)
   
-  config.excluded_models = [ BusinessCategory, BusinessCity ]
+  config.excluded_models = [ BusinessCategory, BusinessCity ,Commontator::Thread]
 
 
   config.model 'Business' do
@@ -18,7 +18,8 @@ RailsAdmin.config do |config|
     exclude_fields :zip_code
     exclude_fields :establidhed
     exclude_fields :payment_mathod
-    exclude_fields :business_products
+    exclude_fields :business_products 
+    exclude_fields :threads  
   end
 
   config.model 'Day' do 

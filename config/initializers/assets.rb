@@ -9,9 +9,7 @@ Rails.application.config.assets.precompile += %w( modern-business.css )
 Rails.application.config.assets.precompile += %w( font-awesome.min.css )
 Rails.application.config.assets.precompile += %w( bootstrap-image-gallery.min.css )
 
-
-
-
+Rails.application.config.assets.precompile += %w( dependent_fields.js )
 
 
 # Add additional assets to the asset load path

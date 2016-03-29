@@ -1,0 +1,43 @@
+<%= render "layouts/header"%>
+<br><br><br><br>
+
+<div class="main">
+  
+    <h4> Update business information </h4><br>
+    <%= simple_form_for @edit do |f|  %>
+    <div class="checkbox">
+       <%= f.input :business_closed, label: "The business is permanently closed!", :input_html => {  id: "permanent_closed", name: "payment_method"  }%>
+    </div>
+  
+  <hr>
+  <div id="suggest_and_edit" class="main" >
+    
+    <h5 class="text-warning">NAME</h5>
+    <%= f.input_field :name, autofocus: true, :class => 'form-control no-border' %>
+    <br><h5 class="text-warning">ADDRESS INFORMATION</h5>
+    <%= f.input :city, :class => 'form-control no-border' %>
+    <%= f.input :address, :class => 'form-control no-border' %>
+    <%= f.input :established, :class => 'form-control no-border' %>
+    <%= f.input :zip_code, :class => 'form-control no-border' %>
+    <br><h5 class="text-warning">PHONE NUMBER</h5>
+    <%= f.input :business_tel, :class => 'form-control no-border' %>
+    <%= f.input :fax_number, :class => 'form-control no-border' %>
+    <br><h5 class="text-warning">OPENING HOURS</h5>
+      <%= f.input_field :opening_hours, :class => 'form-control no-border' %>
+    <br><h5 class="text-warning">WEBSITES</h5>
+    <%= f.input :city, :class => 'form-control no-border' %>
+    <%= f.input :address, :class => 'form-control no-border' %>
+    <%= f.input :established, :class => 'form-control no-border' %>
+    <%= f.input :zip_code, :class => 'form-control no-border' %>
+    
+  </div>
+  <hr>
+  <div class="pull-right">
+    <%= f.button :submit, "Cancel", class: "btn-default" %>
+    <%= f.button :submit, "Submit", class: "btn-primary" %>
+  </div>
+  <%end%>
+
+
+</div>
+<%= javascript_include_tag "dependent_fields" %>

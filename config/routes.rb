@@ -7,14 +7,16 @@ Rails.application.routes.draw do
 
   # devise_for :users
 
-  mount RailsAdmin::Engine => "/admin", as: "rails_admin"
-  mount RailsAdmin::Engine => 'admin/suggest_business/:id/edit', :as => :suggest_business 
+  # mount RailsAdmin::Engine => "/admin", as: "rails_admin"
+  # mount RailsAdmin::Engine => 'admin/suggest_business/:id/edit', :as => :suggest_business 
   
   root 'homepages#index', as: "homepage"
  
   resources :businesses, only: [:index, :show]
   resources :suggest_businesses, only: [:new, :create]
   resources :profiles, only: [:index, :update]
+  resources :suggest_edits, only: [:index]
+
 
   devise_for :users, controllers: 
   {

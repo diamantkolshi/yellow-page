@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :suggest_edit do
+    
+  end
   factory :suggest_business do
     
   end

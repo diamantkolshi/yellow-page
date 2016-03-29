@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328115737) do
+ActiveRecord::Schema.define(version: 20160329084303) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"
@@ -63,7 +63,11 @@ ActiveRecord::Schema.define(version: 20160328115737) do
     t.string   "location"
     t.integer  "zip_code"
     t.string   "website"
-    t.string   "establidhed"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "instagram"
+    t.string   "google"
+    t.string   "established"
     t.string   "email"
     t.integer  "nr_of_employess"
     t.string   "payment_mathod"
@@ -213,6 +217,25 @@ ActiveRecord::Schema.define(version: 20160328115737) do
     t.boolean  "confirm",    default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "suggest_edits", force: :cascade do |t|
+    t.boolean  "business_closed"
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "established"
+    t.integer  "zip_code"
+    t.string   "business_tel"
+    t.string   "fax_number"
+    t.text     "opening_hours"
+    t.string   "website"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "instagram"
+    t.string   "google"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "types", force: :cascade do |t|

@@ -10,7 +10,10 @@
             </div>
             <!-- Contact Details Column -->
             <div class="col-md-4">
-                <h3><%= @business.name %></h3>
+                <h3><%= @business.name %></h3>  
+                <%= link_to "Suggest an Update", suggest_edits_path(id: @business.id) %>
+                <br>
+
                 <p>
                     3481 Melrose Place<br>Beverly Hills, CA 90210<br>
                 </p>
@@ -27,6 +30,7 @@
                 <p><i class="fa fa-clock-o"></i> 
                     <abbr title="Hours">Tomorrow</abbr>: 10:00 - 22:00  
                 </p>
+
                 <%= rating_for @business, "rate", :star => 5 %>  
                 <ul class="list-unstyled list-inline list-social-icons">
                     <li>

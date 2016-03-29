@@ -11,3 +11,4 @@ class RaterController < ApplicationController
     end
   end
 end
+	

@@ -68,7 +68,7 @@ Commontator.configure do |config|
                                         view.commontator_gravatar_image_tag(
                                         user, 1, :s => 60, :d => 'mm') 
                                       else  
-                                        view.image_tag(user.logo_url, width: "80", height: "80") 
+                                        view.image_tag(user.logo_url, width: "50", height: "50") 
                                       end
                                    }
 
