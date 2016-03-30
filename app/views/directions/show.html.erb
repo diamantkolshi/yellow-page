@@ -9,29 +9,13 @@
         margin: 0;
         padding: 0;
       }
-      #map {
-        height: 100%;
-      }
-      #floating-panel {
-        position: absolute;
-        top: 10px;
-        left: 25%;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-      }
     </style>
   </head>
   <body>
     <div id="floating-panel">
     <b>Start: </b>
     <select id="start">
-      <option value="chicago, il">Chicago</option>
+      <option value="prishtine, xs">Chicago</option>
       <option value="st louis, mo">St Louis</option>
       <option value="joplin, mo">Joplin, MO</option>
       <option value="oklahoma city, ok">Oklahoma City</option>
@@ -41,22 +25,26 @@
       <option value="winona, az">Winona</option>
       <option value="kingman, az">Kingman</option>
       <option value="barstow, ca">Barstow</option>
-      <option value="san bernardino, ca">San Bernardino</option>
+      <option value="168 Columbia St">South Roscoe</option>
       <option value="los angeles, ca">Los Angeles</option>
     </select>
     <b>End: </b>
     <select id="end">
-      <option value="chicago, il"> <%= @business.name %> </option>
+      <option> <%= @business.name %> </option>
     </select>
     </div>
     <div id="map"></div>
+
     <script>
-      function initMap() {
+    
+      	var latitude = 42.6548489//<%= @business.latitude %>
+      	var longitude = 21.161828//<%= @business.longitude %>
+      	
+      	var myLatLng = {lat: latitude, lng: longitude };
+      
+     function initMap() {
 
-      	var latitude = <%= @business.latitude %>
-      	var longitude = <%= @business.longitude %>
-
-        var directionsService = new google.maps.DirectionsService;
+		var directionsService = new google.maps.DirectionsService;
         var directionsDisplay = new google.maps.DirectionsRenderer;
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 7,
@@ -71,10 +59,10 @@
         document.getElementById('end').addEventListener('change', onChangeHandler);
       }
 
-      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+     function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         directionsService.route({
           origin: document.getElementById('start').value,
-          destination: document.getElementById('end').value,
+          destination: myLatLng,
           travelMode: google.maps.TravelMode.DRIVING
         }, function(response, status) {
           if (status === google.maps.DirectionsStatus.OK) {
@@ -86,7 +74,7 @@
       }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Thur_PgWUQvdiGx2PDiUy2CKVkqTB2M&callback=initMap">
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Thur_PgWUQvdiGx2PDiUy2CKVkqTB2M&callback=initMap">
     </script>
   </body>
 </html>
