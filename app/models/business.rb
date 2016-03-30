@@ -16,6 +16,10 @@ class Business < ActiveRecord::Base
   has_many :working_days
 
   validates :name, presence: true
+  validates :address, presence: true
+
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
   
   after_create  :create_dir
   after_destroy :destroy_dir

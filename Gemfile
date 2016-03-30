@@ -32,6 +32,9 @@ gem 'will_paginate', '~> 3.0.5'
 gem 'cancancan'
 gem 'commontator', '~> 4.11.1'
 gem 'ratyrate'
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'underscore-rails'
 
 
 group :development do

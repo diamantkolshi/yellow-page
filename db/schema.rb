@@ -57,6 +57,9 @@ ActiveRecord::Schema.define(version: 20160329084303) do
 
   create_table "businesses", force: :cascade do |t|
     t.string   "name"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "aka"
     t.string   "logo"
     t.text     "description"
