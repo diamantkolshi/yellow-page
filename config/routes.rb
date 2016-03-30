@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :suggest_businesses, only: [:new, :create]
   resources :profiles, only: [:index, :update]
   resources :suggest_edits, only: [:index]
-
+  post "suggest_edits/new" => "suggest_edits#create"
 
   devise_for :users, controllers: 
   {

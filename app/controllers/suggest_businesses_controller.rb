@@ -1,6 +1,6 @@
 class SuggestBusinessesController < ApplicationController
     
-	def new
+	  def new
       	@suggest_business = SuggestBusiness.new
     end 
 

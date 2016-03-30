@@ -39,6 +39,6 @@ $("#selectId").on("change", function(e){
 });
 
 
-$(document).on('change', "input[name='payment_method']", function() {
+$(document).on('change', "#permanent_closed", function() {
   $("#suggest_and_edit").toggle(!$('#permanent_closed').is(':checked'));
 }).trigger('change');
