@@ -1,18 +1,34 @@
 module SuggestEditsHelper
+  attr_accessor :suggest_params, :business_params, :work_hours
 
- 	def check_suggested
-        unless require_params[:business_closed] == "1"
-       	   require_params
-      	else
-      	   require_params[:business_closed]      	 
-       	end
-	end
-
-	def field_empty
-       @update_attribute
+  def check_suggested
+    @business_params = Business.find(1)
+    unless require_params[:business_closed] == "1"
+      require_params
+    else
+      false
     end
+  end
 
+  def select_fields
+    @update_attribute.delete_if { |key, value| key == "business_closed" }
+    @work_hours =  @update_attribute.select { |key, value| key == "opening_hours" }
+    @update_attribute = @update_attribute.select { |key, value| value != "" }
+  end
 
-  
+  def check_fields
+    @update_attribute.each do |key, value|
+      if key == "city"
+        if @business_params.cities.first.name == @update_attribute[key]
+            @update_attribute.delete(key)
+        end
+      else
+        if @business_params[key] == @update_attribute[key]
+          @update_attribute.delete(key)
+        end
+      end
+    end
+    @update_attribute.merge(@work_hours)
+  end
+
 end
-	
