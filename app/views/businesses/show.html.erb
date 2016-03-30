@@ -50,21 +50,24 @@
 <%= render "layouts/footer" %>
 
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Thur_PgWUQvdiGx2PDiUy2CKVkqTB2M&callback=initMap" async defer></script>
-<script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.9/src/markerclusterer_packed.js"></script>
-<script>
-function initMap() {
-var myLatLng = {lat: -25.363, lng: 131.044};
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Thur_PgWUQvdiGx2PDiUy2CKVkqTB2M&callback=initMap" async defer></script>
+    <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.9/src/markerclusterer_packed.js"></script>
+    <script>
+    function initMap() {
+          var latitude = <%= @business.latitude %>  
+          var longitude = <%= @business.longitude %>
 
-var map = new google.maps.Map(document.getElementById('geolocation'), {
-zoom: 4,
-center: myLatLng
-});
-var marker = new google.maps.Marker({
-position: myLatLng,
-map: map,
-title: 'Hello World!'
-});
-}
+          var myLatLng = {lat: latitude, lng: longitude };
+
+        var map = new google.maps.Map(document.getElementById('geolocation'), {
+            zoom: 4,
+            center: myLatLng
+        });
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+        });
+        }
 </script>
 </div>

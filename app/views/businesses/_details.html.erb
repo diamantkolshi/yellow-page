@@ -36,6 +36,8 @@
                     <abbr title="Hours">Tomorrow</abbr>: 10:00 - 22:00  
                 </p>
 
+                 <%= link_to "Directions", directions_show_path(id: @business.id) %>
+
                 <%= rating_for @business, "rate", :star => 5 %>  
                 <ul class="list-unstyled list-inline list-social-icons">
                     <li>
