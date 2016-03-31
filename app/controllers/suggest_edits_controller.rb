@@ -12,10 +12,11 @@ class SuggestEditsController < ApplicationController
   def create
     @update_attribute = check_suggested
     if @update_attribute == false
-      
+      send_suggest_in_email
     else
-      select_fields
-      check_fields
+      select_update_fields
+      check_update_fields
+      send_suggest_in_email
     end    
   end
 

@@ -1,2 +1,10 @@
-<%= @update_attribute %><br>
+<table>
+
+<% @update_attribute.each do |attr| %>
+<tr>
+<td style="font-size:17px;width:120px" class="text-center"><%= attr[0].capitalize %>:</td> <td style="color:red"><b><%= attr[1] %></b></td>
+</tr>
+<% end %>
+
+</table>
 

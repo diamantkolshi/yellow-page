@@ -1,19 +1,25 @@
 <%= render "layouts/header"%>
 <br><br><br><br>
-<div class="main">
+<div class="div-center">
   
   <h4> Update business information </h4><br>
-  <%= simple_form_for(@edit, :url => url_for(:action => 'create', :controller => 'suggest_edits')) do |f|  %>
+  <% if flash[:notice] %>
+
+    <div class="alert alert-danger">        
+       <%= flash[:notice] %><br>
+    </div>
+
+  <% end %>
+  <%= simple_form_for(@edit, :url => url_for(:action => 'create', :controller => 'suggest_edits', id: @business_suggest_edit.id)) do |f|  %>
   <div class="checkbox">
     <%= f.input :business_closed, label: "The business is permanently closed!", input_html: { id: "permanent_closed" } %>
   </div>
   
   <hr>
-  <div id="suggest_and_edit" class="main" >
+  <div id="suggest_and_edit" class="div-center" >
     
     <h5 class="text-warning">NAME</h5>
     <%= f.input :name, autofocus: true, input_html: { value: @business_suggest_edit.name }, :class => 'form-control no-border' %>
-
     <br><h5 class="text-warning">ADDRESS INFORMATION</h5>
     <%= f.input :city, input_html: { value: @business_suggest_edit.cities.first.name }, :class => 'form-control no-border' %>
     <%= f.input :address, input_html: { value: @business_suggest_edit.location }, :class => 'form-control no-border' %>
@@ -35,11 +41,10 @@
     
   </div>
   <hr>
-  <div class="pull-right">  
+  <div class="pull-right">
     <%= link_to "cancel", business_path(@business_suggest_edit.id), class: "btn-default" %>
     <%= f.button :button, "Submit", class: "btn-primary" %>
   </div>
   <%end%>
 </div>
-
 <%= javascript_include_tag "dependent_fields" %>
