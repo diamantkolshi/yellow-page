@@ -1,0 +1,20 @@
+  <div class="main">
+    <h3 class="text-center">Suggest <a href="" ="#">Photo</a></h3>
+    <div class="login-or">
+        <hr class="hr-or">
+        <span class="span-or">+</span>
+    </div>  
+    <%= simple_form_for(suggest_photo, :url => { action: "create", controller: "suggest_photos", id: id} , html: { class:'bs-example form-horizontal', role: 'form', 'data-toggle' => 'validator'} ) do |f| %>
+        <div class="form-inputs">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">Photo</label>
+                <div class="col-lg-10">
+                  <%= f.input_field :source, required: true, class:"form-control"  %>
+                </div>
+            </div>                   
+        </div>
+        </div><br><br>
+        <div class="modal-footer">
+            <%= f.button :submit, "Send", class: "btn-primary" %>
+        </div>
+    <% end %>

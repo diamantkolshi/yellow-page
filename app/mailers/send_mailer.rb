@@ -13,4 +13,12 @@ class SendMailer < ActionMailer::Base
       
   	mail to: "mozaix.rails@gmail.com", subject: "Suggest end edit"
   end
+
+  def suggest_photo(suggest, user)
+    @suggest_attr = suggest
+    @user = user
+
+    attachments.inline[@suggest_attr.source.to_s.split("o/").last] = File.read(@suggest_attr.source.file.file)
+    mail to: "mozaix.rails@gmail.com", subject: "suggest a photo"
+  end
 end

@@ -7,8 +7,6 @@ Rails.application.routes.draw do
 
   mount Commontator::Engine => '/commontator'
 
-  # devise_for :users
-
   # mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   # mount RailsAdmin::Engine => 'admin/suggest_business/:id/edit', :as => :suggest_business 
   
@@ -19,6 +17,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:index, :update]
   resources :suggest_edits, only: [:index]
   post "suggest_edits/new" => "suggest_edits#create"
+  resources :suggest_photos, only: [:index, :new, :create]
 
   devise_for :users, controllers: 
   {
