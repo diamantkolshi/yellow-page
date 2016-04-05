@@ -35,6 +35,8 @@ gem 'ratyrate'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem 'omniauth'
+gem 'omniauth-google-oauth2' 
 
 
 group :development do
