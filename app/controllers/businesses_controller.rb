@@ -2,11 +2,12 @@ class BusinessesController < ApplicationController
 
 
   def index  	
-  	@businesses = Business.all.paginate(:page => params[:page], :per_page => 2)
+  	@businesses = Business.all.paginate(:page => params[:page], :per_page => 4)
   end
 
   def show 
   	@business = Business.find(params[:id])
+    @suggest_photos = SuggestPhoto.where(business_id: params[:id], confirm: true)
   	commontator_thread_show(@business)
   	@types = Type.all
   	@products = @business.products.all

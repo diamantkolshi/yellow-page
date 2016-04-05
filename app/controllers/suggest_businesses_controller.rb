@@ -18,5 +18,5 @@ class SuggestBusinessesController < ApplicationController
 	def require_params
 	    params.require(:suggest_business).permit(:name, :email, :tel, :message)
 	end
-
+  
 end

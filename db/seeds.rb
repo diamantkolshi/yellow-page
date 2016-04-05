@@ -28,15 +28,25 @@ category4 = Category.create(name: "Automobile")
 
 # #------------------------------------------------------------
 # # Create country and city with country 
+puts "creating....."
 
 country = Country.create(name: "Kosova")
 city = country.cities.build(name: "Prishtina", prefix: 10000)
 city.save
 
-business = Business.create(name: "Pizza", email: "pizza@hotmail.com", description: "This is a enterprises wich sold some pizza, different name as pizza restaurant")
-business1 = Business.create(name: "BMW", email: "bmw24@live.com", description: "This is a enterprises wich sold some bmw, different name as Baki automobile")
-business2 = Business.create(name: "Delfini", email: "restaurant.delfini@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
-
+business   = Business.create(name: "Pizza", email: "pizza@hotmail.com", description: "This is a enterprises wich sold some pizza, different name as pizza restaurant")
+business1  = Business.create(name: "BMW", email: "bmw24@live.com", description: "This is a enterprises wich sold some bmw, different name as Baki automobile")
+business2  = Business.create(name: "Delfini", email: "restaurant.delfini@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
+business3  = Business.create(name: "Mozaix", email: "mozaix.21@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
+business4  = Business.create(name: "Viva", email: "viva1@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
+business5  = Business.create(name: "Maxi", email: "maxi@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
+business6  = Business.create(name: "Albi mall", email: "Albimall@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
+business7  = Business.create(name: "Grandstore", email: "grandstore@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
+business8  = Business.create(name: "Besarti", email: "Besarti@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
+business9  = Business.create(name: "EuroTours", email: "EuroTours@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
+business10 = Business.create(name: "Hallall Pizza", email: "hallall.pizza@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
+business11 = Business.create(name: "Baristas", email: "Baristas@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
+business12 = Business.create(name: "Riga", email: "riga@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
 
 # # -----------------------------------------------------------
 # # create cities with businesses (many - many)
@@ -116,3 +126,5 @@ business_category3.save
 
 User.create(email: "admin@gmail.com", password: "admin123", admin: true)
 User.create(email: "client@gmail.com", password: "client123", admin: false)
+
+puts "complited.."

@@ -8,24 +8,30 @@
     </li>
 </ul>
 <div id="myTabContent" class="tab-content">
-    <div class="tab-pane fade active in" id="service-one"><br><br>
+     <div class="tab-pane fade active in" id="service-one"><br><br>
         <div class="row">
-            <% unless @business.photos.blank? %>
+            
             <div id="links" class="text-center" >
+            <% unless @business.photos.blank? && @suggest_photos.blank? %>
                 <% @business.photos.each do |photo| %>
                 <a href="<%= image_path photo.source_url %>" title="Banana" data-gallery>
                     <%= image_tag photo.source_url, class: "image_gallery"%>
                 </a>
                 <% end %>
-            </div>
+                <% @suggest_photos.each do |suggest_photo| %>
+                <a href="<%= image_path suggest_photo.source_url %>" title="Banana" data-gallery>
+                    <%= image_tag suggest_photo.source_url, class: "image_gallery"%>
+                </a>
+                <% end %>            
             <% else %>
             <div class="alert alert-info text-center" role="alert"><%= @business.name %> has no photos</div>
             <% end %>
             <% if current_user %>
-            <button type="button" class="btn-link btn-default navbar-btn pull-right" style="margin-right:43%;" data-toggle="modal" data-target="#UpdloadPhotoModal">
+            <button type="button" class="btn-link btn-default navbar-btn" style="" data-toggle="modal" data-target="#UpdloadPhotoModal">
             <%= image_tag "symbol_upload" %>
             </button>
-            <% end %>
+            <% end %>      
+            </div>
         </div>
     </div>
     <div class="tab-pane fade" id="service-two"><br><br>
