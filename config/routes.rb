@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'search/index'
+
   get 'directions/show'
 
   post '/rate' => 'rater#create', :as => 'rate'
@@ -25,5 +27,11 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     :omniauth_callbacks => "omniauth_callbacks"
   }   
- 
+  
+   resources :search, only: :index do
+    collection do
+      post :import
+      get :autocomplete # <= add this line
+    end
+  end
 end

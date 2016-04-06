@@ -1,7 +1,11 @@
 class Business < ActiveRecord::Base
   mount_uploader :logo, LogoUploader 
   ratyrate_rateable "rate"
+  
+  searchkick autocomplete: ['name']
 
+  paginates_per 4
+ 
   acts_as_commontable
 
   has_many :business_cities

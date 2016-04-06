@@ -20,7 +20,7 @@ WorkingDay.delete_all
 User.delete_all
 
 # #------------------------------------------------------------
-# # Create some categories
+# # Create some categories	
 category1 = Category.create(name: "Restaurants")
 category2 = Category.create(name: "Pizza")
 category3 = Category.create(name: "Fast Food")

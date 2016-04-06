@@ -37,6 +37,7 @@ gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'omniauth'
 gem 'omniauth-google-oauth2' 
+gem "searchkick"
 
 
 group :development do
