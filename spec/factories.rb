@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :search do
+    
+  end
   factory :suggest_photo do
     
   end

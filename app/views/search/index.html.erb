@@ -15,45 +15,49 @@
 	</div>
 </div>
 
-
-<% @busiensses.each do |business| %>
-<div class="row" >
-	<hr>
-	<div class="col-xs-6 col-md-3">
-		<img class="" width="80%" height="90px" src="http://placehold.it/900x300" alt="">
-	</div>
-	<div class="col-xs-12 col-sm-6 col-md-8">
-		<h4>
-		<a href="#">Blog Post Title</a>
-		</h4>
-		<p class="">
-			<i class="fa fa-map-marker"></i> 127 Yonge St, Toronto, ON M5C 1W4 <a href="#">Get directions »</a>
-		</p>
-		<p><i class="fa fa-clock-o"></i> Posted on August 28, 2013 at 10:00 PM</p>
-		<div class="col-lg-7">
-				<ol class="breadcrumb">
-					<li><i class="fa fa-television"></i><a href="#"> Website</a></li>
-					<li><i class="fa fa-map-marker"></i><a href="#"> Get Directions</a></li>
-					<li class="dropdown"><i class="fa fa-phone"></i>
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Telephone <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="portfolio-1-col.html">Telephone 1</a>
-							</li>
-							<li>
-								<a href="portfolio-2-col.html">Telephone 2</a>
-							</li>
-						</ul>
-					</li>
-				</li>
-			</ol>
+<% @businesses.each do |business| %>
+	<div class="row" >	
+		<hr>
+		<div class="col-xs-6 col-md-3">
+		  <% if business.logo.blank? %>
+        <%= image_tag "nologo.png", width: "80%", height: "90px"%>
+			<% else %>
+        <%= image_tag business.logo_url, width: "80%", height: "90px"%>
+			<% end %>
 		</div>
-	</div>
- </div>
- 
- <div>
- 	
- </div>
- <% end %>
+		<div class="col-xs-12 col-sm-6 col-md-8">
+			<h4>
+			  <%= link_to business.name, business_path(business.id) %>
+			</h4>
+			<p class="">
+				<i class="fa fa-map-marker"></i><%= business.address %><a href="#"> Get directions »</a>
+			</p>
+			<p><i class="fa fa-clock-o"></i> Posted on August 28, 2013 at 10:00 PM</p>
+			<div class="col-lg-7">
+					<ol class="breadcrumb">
+						<li><i class="fa fa-angle-double-right"></i><a href="#"> Website</a></li>
+						<li><i class="fa fa-map-marker"></i><a href="#"> Get Directions</a></li>
+						<li class="dropdown"><i class="fa fa-phone"></i>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Telephone <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="portfolio-1-col.html">Telephone 1</a>
+								</li>
+								<li>
+									<a href="portfolio-2-col.html">Telephone 2</a>
+								</li>
+							</ul>
+						</li>
+					</li>
+				</ol>
+			</div>
+		</div>
+	 </div>
+	 
+	 <div>
+	 	
+	 </div>
+<% end %>
 
-</div>
+
+

@@ -28,7 +28,6 @@ Rails.application.routes.draw do
   
    resources :search, only: :index do
     collection do
-      post :import
       get :autocomplete # <= add this line
     end
   end
