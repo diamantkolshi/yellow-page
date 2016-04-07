@@ -56,8 +56,6 @@
 <%= render "layouts/footer" %>
 
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Thur_PgWUQvdiGx2PDiUy2CKVkqTB2M&callback=initMap" async defer></script>
-    <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.9/src/markerclusterer_packed.js"></script>
     <script>
     function initMap() {
           var latitude = <%= @business.latitude %>  
@@ -76,4 +74,6 @@
         });
         }
 </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2Thur_PgWUQvdiGx2PDiUy2CKVkqTB2M&callback=initMap" async defer></script>
+    <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.9/src/markerclusterer_packed.js"></script>
 </div>

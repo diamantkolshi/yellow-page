@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   get 'search/index'
 
-  get 'directions/show'
-
   post '/rate' => 'rater#create', :as => 'rate'
   get 'upload_photos/index'
 
