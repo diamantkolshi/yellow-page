@@ -14,7 +14,7 @@
 		</ol>
 	</div>
 </div>
-
+ 
 <% @businesses.each do |business| %>
 	<div class="row" >	
 		<hr>
@@ -30,7 +30,7 @@
 			  <%= link_to business.name, business_path(business.id) %>
 			</h4>
 			<p class="">
-				<i class="fa fa-map-marker"></i><%= business.address %><a href="#"> Get directions »</a>
+				<i class="fa fa-map-marker"></i><%  business.address %><a href="#"> Get directions »</a>
 			</p>
 			<p><i class="fa fa-clock-o"></i> Posted on August 28, 2013 at 10:00 PM</p>
 			<div class="col-lg-7">
@@ -58,6 +58,19 @@
 	 	
 	 </div>
 <% end %>
+
+
+<!-- <nav class="navbar navbar-default">
+ <div class="container">
+   <%# form_tag search_index_path, class: "navbar-form navbar-left", role: "search", method: :get do |f| %>
+   		<div class="form-group">
+   	 		<%# text_field_tag :q, params[:q], class: "form-control" %>
+   		</div>
+   			<%# button_tag "Search", class: "brtn btn-default", name: nil %>
+   <%# end %> 	
+ </div>
+</div> -->
+
 
 
 

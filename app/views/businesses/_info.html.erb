@@ -1,4 +1,4 @@
-     <div class="container" style="padding:50px;">
+<div class="container" style="padding:50px;">
         <div class="msg"><span class="glyphicon glyphicon glyphicon-ok"></span> Regular hours</div>
           <% unless @business.working_days.blank? %>  
             <% @business.working_days.each do |work| %>
@@ -51,31 +51,13 @@
                         </table>
                         <% end %>                      
                     </div>
-                  <% end %>
-              </div>                
-         </div>
-      <% end %>
+                     <% end %>
+                </div>                
+            </div>
+            <% end %>
     <% end %>
 </div>
 
 
-     
 
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel-group" id="accordion" >
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Reating & Review</a>
-                        </h4>
-                    </div>
-                    <div id="collapseOne" class="panel-collapse collapse">
-                        <div class="panel-body alert"> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
