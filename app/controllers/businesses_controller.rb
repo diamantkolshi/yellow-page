@@ -22,6 +22,7 @@ class BusinessesController < ApplicationController
         return status_business(work)
       end
     end
+    []
   end
 
   def status_business(work)

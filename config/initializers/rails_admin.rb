@@ -4,7 +4,7 @@ RailsAdmin.config do |config|
   end
   config.current_user_method(&:current_user)
   
-  config.excluded_models = [ BusinessCategory, BusinessCity ,Commontator::Thread]
+  config.excluded_models = [ BusinessCategory, BusinessCity ,Commontator::Thread, Commontator::Comment, Commontator::Subscription, AverageCache, OverallAverage, Rate, RatingCache, Search ]
 
 
   config.model 'Business' do
