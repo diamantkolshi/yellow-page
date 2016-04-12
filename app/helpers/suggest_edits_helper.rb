@@ -22,6 +22,10 @@ module SuggestEditsHelper
         if @business_params.cities.first.name == @update_attribute[key]
             @update_attribute.delete(key)
         end
+      elsif key == "business_tel"
+        if @business_params.phones.first.phone_number == @update_attribute[key]
+            @update_attribute.delete(key)
+        end
       else
         if @business_params[key] == @update_attribute[key]
           @update_attribute.delete(key)

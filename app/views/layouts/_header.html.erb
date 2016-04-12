@@ -12,7 +12,7 @@
         <%= link_to "YP", root_path, class: "navbar-brand"%>
         <%= form_tag("/search/index", method: "get", class: "navbar-form navbar-left" ) do %>
            <div class="form-group center">
-            <%= text_field_tag :query, params[:query], class: "form-control", require: true,  style: "width:400px;", id: "business_search", placeholder: "Business name", autocomplete: "off" %>
+            <%= text_field_tag :query, params[:query], :required => true,class: "form-control", style: "width:400px;", id: "business_search", placeholder: "Business name", autocomplete: "off" %>
             </div>
            <%= button_tag(type: "submit", class: "btn btn-primary") do %>
                 <i class="fa fa-search"></i>

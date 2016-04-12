@@ -14,20 +14,16 @@
           <tr>
             <td class="divider" colspan="2" bgcolor="#555555" height="2"></td>
           </tr>
-          <tr class="episode" align="center">
-            <td > 
-              <tr>
+          <tr class="episode" align="center">            
               <% unless @update_attribute == false  %>
                 <% @update_attribute.each do |attr| %>              
-                  <td style="font-size:17px;width:100px;padding-left:200px;" ><%= attr[0].capitalize %>:</td> <td style="color:red"><b><%= attr[1] %></b></td>              
-                <% end %> 
-              </tr>
+                  <tr><td style="font-size:17px;width:100px;padding-left:200px;" ><%= attr[0].capitalize %>:</td> <td style="color:red"><b><%= attr[1] %></b></td></tr>              
+                <% end %>               
               <% else %>              
                 <td style="padding-left:50px;"  class="info" >
                   <%= @user.email %> suggested that <%= @business_attribute.name.upcase %> business is closed permanently
                 </td>  
-              <% end %>
-            </td>
+              <% end %>            
           </tr>
           <tr>
             <td class="divider" colspan="2" bgcolor="#555555" height="2"></td>
