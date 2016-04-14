@@ -32,9 +32,10 @@
                         <div class="panel panel-default alert alert-warning alert-dismissible">
                           <div class="panel-body">
                                  <% @user_creator.each do |comment| %>
-                                <h3><%= Business.find(comment.thread.commontable_id).name %></h3>
-                                <h5><%= Business.find(comment.thread.commontable_id).email %></h5>
-                                <p><%= comment.body %></p>
+                                <h3 style="color:#3366ff"><%= Business.find(comment.thread.commontable_id).name %></h3>
+                                <h5><%= Business.find(comment.thread.commontable_id).address %></h5>
+                                <p><i class="fa fa-comments-o" aria-hidden="true"></i>
+                                     <%= comment.body %></p>
                                 <hr>
                                 <% end %>
                           </div>

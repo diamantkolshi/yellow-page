@@ -20,7 +20,7 @@
         <br>
         <h5><%= @business.description %></h5>
         <p>
-            3481 Melrose Place<br>Beverly Hills, CA 90210<br>
+           <%= @business.address if @business.address? %>
         </p>
         <% @business.phones.each do |phone| %>
         <p><i class="fa fa-phone"></i>
@@ -32,18 +32,18 @@
         <p><i class="fa fa-clock-o"></i>
         <abbr title="Hours"> Today</abbr>:
         <% if @status == [] %>
-            <b style="padding:5px;background-color:#808080;color:white"> UNKNOWN</b>
-        <% elsif @status == true%>
-            <b style="padding:5px;background-color:green;color:white"> OPEN</b>
+            <b style="padding:5px;background-color:#808080;color:white"> UNKNOWN </b>
+        <% elsif @status == true %>
+            <b style="padding:5px;background-color:green;color:white"> OPEN </b>
         <% else %>
-            <b style="padding:5px;background-color:red;color:white"> CLOSE</b>
+            <b style="padding:5px;background-color:red;color:white"> CLOSE </b>
         <% end %>
     </p>
      <!--    <p><i class="fa fa-clock-o"></i>
         <abbr title="Hours">Tomorrow</abbr>: 10:00 - 22:00
         </p> -->
-        <a href = "https://maps.google.com/maps?saddr=&daddr=<%= @business.latitude %>, <%= @business.longitude %>&dirflg=d" > Directions</a>
-        <%= rating_for @business, "rate", :star => 5 %>
+        <a href = "https://maps.google.com/maps?saddr=&daddr=<%= @business.latitude %>, <%= @business.longitude %>&dirflg=d" > Directions</a><br>
+        <%= rating_for @business, "rate", :star => 5 %><br>
         <ul class="list-unstyled list-inline list-social-icons">
             <% unless @business.facebook.blank? %>
                 <li>
@@ -52,12 +52,12 @@
             <% end %>
             <% unless @business.instagram.blank? %>
                 <li>
-                    <a href="#"><i class="fa fa-linkedin-square fa-2x"></i></a>
+                    <a href="<%= @business.instagram %>"><i class="fa fa-linkedin-square fa-2x"></i></a>
                 </li>
             <% end %>
             <% unless @business.twitter.blank? %>
                 <li>
-                    <a href="#"><i class="fa fa-twitter-square fa-2x"></i></a>
+                    <a href="<%= @business.twitter %>"><i class="fa fa-twitter-square fa-2x"></i></a>
                 </li>
             <% end %>
         </ul>

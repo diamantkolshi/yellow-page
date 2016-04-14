@@ -34,7 +34,7 @@ country = Country.create(name: "Kosova")
 city = country.cities.build(name: "Prishtina", prefix: 10000)
 city.save
 
-business   = Business.create(name: "Pizza", email: "pizza@hotmail.com", description: "This is a enterprises wich sold some pizza, different name as pizza restaurant")
+business   = Business.create(name: "Pizza Hallall", email: "pizza@hotmail.com", address: "Arberia", latitude: 42.644241, longitude: 21.10527,description: "This is a enterprises wich sold some pizza, different name as pizza restaurant")
 business1  = Business.create(name: "BMW", email: "bmw24@live.com", description: "This is a enterprises wich sold some bmw, different name as Baki automobile")
 business2  = Business.create(name: "Delfini", email: "restaurant.delfini@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
 business3  = Business.create(name: "Mozaix", email: "mozaix.21@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")

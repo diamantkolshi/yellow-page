@@ -2,7 +2,7 @@ class Business < ActiveRecord::Base
   mount_uploader :logo, LogoUploader 
   ratyrate_rateable "rate"
   
-  searchkick autocomplete: ['name']
+  searchkick word_start: [:name]
 
   paginates_per 4
  
