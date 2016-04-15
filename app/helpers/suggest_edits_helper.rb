@@ -23,8 +23,10 @@ module SuggestEditsHelper
             @update_attribute.delete(key)
         end
       elsif key == "business_tel"
-        if @business_params.phones.first.phone_number == @update_attribute[key]
+        @business_params.phones.each do |phone|
+          if phone.phone_number == @update_attribute[key]
             @update_attribute.delete(key)
+          end
         end
       else
         if @business_params[key] == @update_attribute[key]

@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
   # before_action :user_is_admin?
   
   def index
-    @user_creator =  Commontator::Comment.where(creator_id: current_user.id) 
+    @user_creator =  Commontator::Comment.where(creator_id: current_user.id).paginate(:page => params[:page], :per_page => 5) 
   end
 
   def update
@@ -12,6 +12,6 @@ class ProfilesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :logo)
+    params.require(:user).permit(:email, :name, :logo)
   end
 end
