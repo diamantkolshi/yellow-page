@@ -9,6 +9,9 @@
 @import "paginate.css";
 
 .ui-autocomplete {
+  max-height: 100px;
+  overflow-y: auto;
+  overflow-x: hidden;
   position: absolute;
   top: 100%;
   left: 0;
@@ -16,7 +19,7 @@
   float: left;
   display: none;
   min-width: 160px;
-  _width: 160px;
+  width: 160px;
   padding: 4px 0;
   margin: 2px 0 0 0;
   list-style: none;
