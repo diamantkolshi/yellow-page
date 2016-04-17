@@ -376,6 +376,7 @@ DEPENDENCIES
   high_voltage
   honeybadger
   jquery-rails
+  jquery-ui-rails
   launchy
   neat (~> 1.7.0)
   newrelic_rpm (>= 3.9.8)

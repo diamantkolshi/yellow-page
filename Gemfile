@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.2.4"
+ruby "2.3.0"
 
 gem "autoprefixer-rails"
 gem "bourbon", "~> 4.2.0"
@@ -38,6 +38,7 @@ gem 'underscore-rails'
 gem 'omniauth'
 gem 'omniauth-google-oauth2' 
 gem "searchkick"
+gem 'jquery-ui-rails'
 
 
 group :development do

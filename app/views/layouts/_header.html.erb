@@ -98,17 +98,19 @@
      <%# render "layouts/suggest_business" %>
 
 
+ <script type="text/javascript">
+   $(function() {
+     $( "#business_search" ).autocomplete({
+    <% ac_businesses = Business.all %>
+     source: [
+      <%ac_businesses.each do |b| %>
+     { label: "<%=b.name %>", value: "<%=b.name %>" },
+     <% end %>
+     ]
+     });
+   });    
+ </script>
 
-
-
-
-<script type="text/javascript">
-  $ ->
-  $('#business_search').typeahead
-    name: "search"
-    remote: "/search/autocomplete?query=%QUERY"
-
-</script>
 
 
 
