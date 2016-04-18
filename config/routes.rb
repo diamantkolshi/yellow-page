@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   
   root 'homepages#index', as: "homepage"
  
+   get 'businesses/open'
+
   resources :businesses, only: [:index, :show]
   resources :suggest_businesses, only: [:new, :create]
   resources :profiles, only: [:index, :update]

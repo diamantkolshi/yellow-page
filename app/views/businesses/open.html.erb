@@ -7,19 +7,14 @@
 		<div class="col-lg-12">
 			<h1 class="page-header">Searching ....
 			</h1>
-			<ol class="breadcrumb">
-				<li><a href="index.html">Home</a>
-			</li>
-			<li class="active">Filter By:</li>
-			<li> <%=link_to "Open", businesses_open_path %> </li>
-		</ol>
 	</div>
 </div>
 
-<% if @businesses.any? %>
-  <h4 style="margin-left:8%;"><%= @businesses.size %>  businesses found</h4>
-	<% @businesses.each do |business| %>
-		<div class="row" >	
+<% if @open.any? %>
+  <h4 style="margin-left:8%;">Businesses Open</h4>
+	<% @open.each do |business| %>
+		<% if business.open %>
+	<div class="row" >	
 			<hr>
 			<div class="col-xs-6 col-md-3">
 			  <% if business.logo.blank? %>
@@ -58,8 +53,8 @@
 		 </div>
 		 
 		 <div>
-		 	
 		 </div>
+		<% end %> 
 	<% end %>
 <% else %>
   <h5>Not found </h5>

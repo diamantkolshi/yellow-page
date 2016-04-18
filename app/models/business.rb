@@ -37,6 +37,16 @@ class Business < ActiveRecord::Base
      FileUtils.remove_dir("#{Rails.public_path}/uploads/#{self.class.to_s.pluralize.downcase}/#{self.id}")     
   end
 
+  def open
+     self.working_days.each do |wd|
+      if wd.day.name.capitalize == Time.now.strftime("%A")
+        return (wd.open.strftime("%H:%M")..wd.close.strftime("%H:%M")).include?(Time.now.strftime("%H:%M"))
+     else
+          []
+      end
+    end
+  end
+  
 end
 
 
