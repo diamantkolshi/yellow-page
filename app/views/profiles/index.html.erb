@@ -39,19 +39,51 @@
                                 <hr>
                                 <% end %>
                           </div>
-                                  <div class="row text-center">
-            <div class="col-lg-12">
-                <ul class="pagination">
-                    <div class="digg_pagination">  
-                        <%= will_paginate @user_creator, :container => false %>
-                    </div>
-                </ul>
-            </div>
-        </div>
+                          <div class="row text-center">
+                                <div class="col-lg-12">
+                                    <ul class="pagination">
+                                        <div class="digg_pagination">  
+                                            <%= will_paginate @user_creator, :container => false %>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>                     
                     </div>
+
                     <div class="tab-pane fade" id="service-two">
-                        <h4>Reviews</h4>
+                        <div class="panel panel-default alert alert-warning alert-dismissible">
+                          <div class="panel-body">
+                            <% @user_ratings.each do |rate| %>
+                                <h3 style="color:#3366ff"><%= Business.find(rate.business_id).name %></h3>
+                                <h5><%= Business.find(rate.business_id).address %></h5>
+                                
+                                <div id="rateYo<%= rate.id %>"></div>
+                             
+                                <script type="text/javascript">
+                                    $(function () {
+                                     
+                                      $("#rateYo<%= rate.id %>").rateYo({
+                                        rating: <%= rate.score %>,
+                                        readOnly: true
+                                      });
+
+                                    });
+                                </script>
+
+                                <hr>
+                            <% end %>
+                          </div>
+                          <div class="row text-center">
+                                <div class="col-lg-12">
+                                    <ul class="pagination">
+                                        <div class="digg_pagination">  
+                                            <%= will_paginate @user_ratings, :container => false %>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>       
                     </div>
                 </div>
             </div>

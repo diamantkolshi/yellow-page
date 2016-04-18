@@ -9,10 +9,17 @@ Rails.application.config.assets.precompile += %w( modern-business.css )
 Rails.application.config.assets.precompile += %w( font-awesome.min.css )
 Rails.application.config.assets.precompile += %w( bootstrap-image-gallery.min.css )
 Rails.application.config.assets.precompile += %w( jquery.rateyo.css )
+Rails.application.config.assets.precompile += %w( blueimp-gallery.min.css )
 
 
 
 Rails.application.config.assets.precompile += %w( dependent_fields.js )
+Rails.application.config.assets.precompile += %w( jquery_ujs.js )
+Rails.application.config.assets.precompile += %w( jquery.js )
+Rails.application.config.assets.precompile += %w( jquery.rateyo.js )
+Rails.application.config.assets.precompile += %w( jquery.blueimp-gallery.min.js )
+
+
 
 
 # Add additional assets to the asset load path

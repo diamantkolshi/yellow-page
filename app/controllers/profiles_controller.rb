@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
   
   def index
     @user_creator =  Commontator::Comment.where(creator_id: current_user.id).paginate(:page => params[:page], :per_page => 5) 
+    @user_ratings = Rating.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 5) 
   end
 
   def update

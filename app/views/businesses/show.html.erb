@@ -75,15 +75,14 @@
                 
 
                 <script type="text/javascript">
-                $(function () {
-                 
-                  $("#rateYo<%= rate.id %>").rateYo({
-                    rating: <%= rate.score %>,
-                    readOnly: true
-                  });
+                    $(function () {
+                     
+                      $("#rateYo<%= rate.id %>").rateYo({
+                        rating: <%= rate.score %>,
+                        readOnly: true
+                      });
 
-                });
-
+                    });
                 </script>
               </div>
             <% end %>
