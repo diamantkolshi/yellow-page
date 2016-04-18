@@ -1,4 +1,4 @@
-<!-- Content Row -->
+    <!-- Content Row -->
 <div class="row">
     <!-- Map Column -->
     <div class="col-md-4">
@@ -16,6 +16,7 @@
         </div>
        
         <h3><%= @business.name %></h3>
+        <div id="rateAverage"></div><br>
         <%= link_to "Suggest an Update", suggest_edits_path(id: @business.id) %>
         <br>
         <h5><%= @business.description %></h5>
@@ -43,7 +44,6 @@
         <abbr title="Hours">Tomorrow</abbr>: 10:00 - 22:00
         </p> -->
         <a href = "https://maps.google.com/maps?saddr=&daddr=<%= @business.latitude %>, <%= @business.longitude %>&dirflg=d" > Directions</a><br>
-        <%= rating_for @business, "rate", :star => 5 %><br>
         <ul class="list-unstyled list-inline list-social-icons">
             <% unless @business.facebook.blank? %>
                 <li>
@@ -64,3 +64,15 @@
     </div>
 </div>
 <!-- /.row -->
+
+
+<script type="text/javascript">
+    $(function () {
+     
+      $("#rateAverage").rateYo({
+        rating: <%= @average %>,
+        readOnly: true
+      });
+     
+    });
+</script>

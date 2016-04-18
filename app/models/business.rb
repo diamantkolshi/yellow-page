@@ -1,6 +1,5 @@
 class Business < ActiveRecord::Base
   mount_uploader :logo, LogoUploader 
-  ratyrate_rateable "rate"
   
   searchkick word_start: [:name]
 

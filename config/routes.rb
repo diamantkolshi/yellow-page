@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   get 'search/index'
+  get 'rating/index'
 
-  post '/rate' => 'rater#create', :as => 'rate'
   get 'upload_photos/index'
 
   mount Commontator::Engine => '/commontator'

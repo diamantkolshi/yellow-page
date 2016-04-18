@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   mount_uploader :logo, LogoUploader 
-  ratyrate_rater
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

@@ -14,8 +14,6 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap
-//= require jquery.raty
-//= require ratyrate
 //= require underscore
 //= require gmaps/google
 //= require jquery-ui	

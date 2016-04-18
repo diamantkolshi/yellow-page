@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :rating do
+    
+  end
   factory :search do
     
   end

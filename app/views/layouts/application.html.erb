@@ -27,8 +27,10 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag "//blueimp.github.io/Gallery/css/blueimp-gallery.min.css", media: "all" %>
     <%= stylesheet_link_tag "bootstrap-image-gallery.min", media: "all" %>
-    
-     <script src="/assets/jquery.js" type="text/javascript"></script>
+    <%= stylesheet_link_tag "jquery.rateyo.css", media: "all" %>
+
+
+    <script src="/assets/jquery.js" type="text/javascript"></script>
     <script src="/assets/jquery_ujs.js" type="text/javascript"></script>
     
     <% javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -56,5 +58,7 @@
     <%= render "javascript" %>
 
     <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script> 
+    <script src="jquery.js"></script>
+    <script src="jquery.rateyo.js"></script>
   </body>
 </html>
