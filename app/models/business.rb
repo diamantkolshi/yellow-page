@@ -38,11 +38,18 @@ class Business < ActiveRecord::Base
   end
 
   def open
-     self.working_days.each do |wd|
-      if wd.day.name.capitalize == Time.now.strftime("%A")
-        return (wd.open.strftime("%H:%M")..wd.close.strftime("%H:%M")).include?(Time.now.strftime("%H:%M"))
-     else
-          []
+    if self.working_days == []
+          return []
+    else
+      if self.working_days != []
+      self.working_days.each do |wd|
+           wd.day.name.capitalize == Time.now.strftime("%A")
+        if (wd.open.strftime("%H:%M")..wd.close.strftime("%H:%M")).include?(Time.now.strftime("%H:%M"))
+          return true
+        else
+          return false
+          end
+        end 
       end
     end
   end
