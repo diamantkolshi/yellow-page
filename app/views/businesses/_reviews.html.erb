@@ -1,0 +1,104 @@
+<div class="container" style="padding:50px;">
+    <div class="msg"><span class="glyphicon glyphicon-ok"></span> Reviews</div>
+    <div class="col-lg-12">
+        <ul id="myTab" class="nav nav-tabs nav-justified">
+            <li class="active"><a href="#service-3" data-toggle="tab">Comment</i></a>
+        </li>
+        <li class=""><a href="#service-4" data-toggle="tab"> Rating</a> </a>
+    </li>
+</ul>
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade active in" id="service-3"><br><br>
+        <div class="row">
+            <%= commontator_thread(@business) %>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="service-4"><br><br>
+        <div class="row">
+         <% if current_user %>
+            <div class="well">                
+                <% if !Rating.user_rate(@business.id, current_user.id) %>
+                <h4>Leave a Rate:</h4>
+                <form role="form">
+                    <div class="form-group">                   
+                        <div id="rateUser"></div>                      
+                    </div>
+                    <button id="getRating" class="btn btn-primary">Submit</button>
+                </form>
+                <% else %>
+                  <h4>You have rated for this business</h4>
+                <% end %>
+            </div>
+        <% else %>
+            <div class="well">
+                <h4>You should signed in to leave a rate</h4>
+            </div
+        <% end %>
+            <hr>
+
+            <% @rating.each do |rate| %>
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <% if User.find(rate.user_id).logo.blank? %>
+                            <%= image_tag "noprofile1.png", width: "64", height: "64", :class => "media-object"%>
+                        <% else %>
+                            <%= image_tag User.find(rate.user_id).logo_url, width: "64", height: "64", :class => "media-object"%>                         
+                        <% end %>
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading"><%= User.find(rate.user_id).name %>
+                            <small><%= rate.created_at %></small>
+                        </h4>
+                        <div id="rateYo<%= rate.id %>"></div>
+                    </div>
+                
+
+                <script type="text/javascript">
+                    $(function () {
+                     
+                      $("#rateYo<%= rate.id %>").rateYo({
+                        rating: <%= rate.score %>,
+                        readOnly: true
+                      });
+
+                    });
+                </script>
+              </div>
+            <% end %>
+          </div>
+
+        
+        <!-- <div class="alert alert-info text-center" role="alert"> No reviews</div>                            -->
+    </div>
+
+
+    
+
+<script type="text/javascript">
+    $(function () {
+
+        $("#rateUser").rateYo({
+            rating: 0,
+            precision: 2
+        })
+                      
+    });
+
+        $(function () {
+             
+            var $rateUser = $("#rateUser").rateYo();
+                 
+            $("#getRating").click(function () {
+                 
+                    /* get rating */
+            var rating = $rateUser.rateYo("rating");
+            $.ajax({
+                url: '/rating/index',
+                type: 'GET',
+                data: { score: rating, business_id: <%= @business.id %> }
+            });
+          
+        });
+             
+    });
+</script>
