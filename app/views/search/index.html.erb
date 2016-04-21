@@ -32,9 +32,13 @@
 				<h4>
 				  <%= link_to business.name, business_path(business.id) %>
 				</h4>
-				<p class="">
-					<i class="fa fa-map-marker"></i><%  business.address %><a href="#"> Get directions »</a>
-				</p>
+				<% unless business.addresses.blank? %> 
+					<p class="">
+						<i class="fa fa-map-marker"></i>
+								<%= business.addresses.first.name %>					
+						<a href="#"> Get directions »</a>
+					</p>
+				<% end %>
 				<p><i class="fa fa-clock-o"></i> Posted on August 28, 2013 at 10:00 PM</p>
 				<div class="col-lg-7">
 						<ol class="breadcrumb">

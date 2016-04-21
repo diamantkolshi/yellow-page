@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :business_address do
+    
+  end
+  factory :address do
+    
+  end
   factory :rating do
     
   end

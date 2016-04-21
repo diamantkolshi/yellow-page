@@ -21,17 +21,15 @@
     <h5 class="text-warning">NAME</h5>
     <%= f.input :name, autofocus: true, input_html: { value: @business_suggest_edit.name }, :class => 'form-control no-border' %>
     <br><h5 class="text-warning">ADDRESS INFORMATION</h5>
-    <%= f.input :city, input_html: { value: @business_suggest_edit.cities.first.name }, :class => 'form-control no-border' %>
-    <%= f.input :address, input_html: { value: @business_suggest_edit.location }, :class => 'form-control no-border' %>
-    <%= f.input :established, input_html: { value: @business_suggest_edit.established }, :class => 'form-control no-border' %>
+    
+    <%= f.input :address, :class => 'form-control no-border' %>
+    
+    
     <%= f.input :zip_code, input_html: { value: @business_suggest_edit.zip_code }, :class => 'form-control no-border' %>
     
     <br><h5 class="text-warning">PHONE NUMBER</h5>
-    <% @business_suggest_edit.phones.each do |phone|%>
-      (<%= phone.phone_type %>)
-      <%= f.input :business_tel, input_html: { value: phone.phone_number }, :class => 'form-control no-border' %>
-    <% end %>
     <%= f.input :business_tel, :class => 'form-control no-border', input_html: { placeholder: "type, number" } %>
+
     
     <br><h5 class="text-warning">OPENING HOURS</h5>
     <%= f.input :opening_hours, input_html: { placeholder: "sogest for some working days" }, :class => 'form-control no-border' %>

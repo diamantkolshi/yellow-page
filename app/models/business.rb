@@ -6,13 +6,13 @@ class Business < ActiveRecord::Base
   paginates_per 4
  
   acts_as_commontable
-
-  has_many :business_cities
+ 
+  has_many :business_addresses
   has_many :business_categories
   has_many :business_products
-  has_many :cities, through: :business_cities
   has_many :categories, through: :business_categories
   has_many :products, through: :business_products
+  has_many :addresses, through: :business_addresses
   has_many :phones
   has_many :photos
   has_many :videos
@@ -21,8 +21,8 @@ class Business < ActiveRecord::Base
   validates :name, presence: true
   # validates :address, presence: true
 
-  reverse_geocoded_by :latitude, :longitude
-  after_validation :reverse_geocode
+  # reverse_geocoded_by :latitude, :longitude
+  # after_validation :reverse_geocode
 
   after_create  :create_dir
   after_destroy :destroy_dir

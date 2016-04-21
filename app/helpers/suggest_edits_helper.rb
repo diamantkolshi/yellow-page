@@ -17,10 +17,13 @@ module SuggestEditsHelper
   end
 
   def check_update_fields
+
     @update_attribute.each do |key, value|
-      if key == "city"
-        if @business_params.cities.first.name == @update_attribute[key]
+      if key == "address"
+        @business_params.addresses.each do |address|
+          if address.name == @update_attribute[key]
             @update_attribute.delete(key)
+          end
         end
       elsif key == "business_tel"
         @business_params.phones.each do |phone|

@@ -10,7 +10,6 @@ Country.delete_all
 Category.delete_all
 City.delete_all
 Business.delete_all
-BusinessCity.delete_all
 BusinessCategory.delete_all
 Photo.delete_all
 Phone.delete_all
@@ -34,8 +33,8 @@ country = Country.create(name: "Kosova")
 city = country.cities.build(name: "Prishtina", prefix: 10000)
 city.save
 
-business   = Business.create(name: "Pizza Hallall", email: "pizza@hotmail.com", address: "Arberia", latitude: 42.644241, longitude: 21.10527,description: "This is a enterprises wich sold some pizza, different name as pizza restaurant")
-business1  = Business.create(name: "BMW", email: "bmw24@live.com", address: "Rame Bllaca", latitude: 42.672320, longitude:  21.177660, description: "This is a enterprises wich sold some bmw, different name as Baki automobile")
+business   = Business.create(name: "Pizza Hallall", email: "pizza@hotmail.com", description: "This is a enterprises wich sold some pizza, different name as pizza restaurant")
+business1  = Business.create(name: "BMW", email: "bmw24@live.com", description: "This is a enterprises wich sold some bmw, different name as Baki automobile")
 business2  = Business.create(name: "Delfini", email: "restaurant.delfini@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
 business3  = Business.create(name: "Mozaix", email: "mozaix.21@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
 business4  = Business.create(name: "Viva", email: "viva1@gmail.com", description: "This is a enterprises wich sold some fishs and meet, different name as fish restaurant")
@@ -50,23 +49,6 @@ business12 = Business.create(name: "Riga", email: "riga@gmail.com", description:
 
 # # -----------------------------------------------------------
 # # create cities with businesses (many - many)
-
-bc = BusinessCity.create
-bc.business = business
-bc.city = city
-
-bc1 = BusinessCity.create
-bc1.business = business1
-bc1.city = city
-
-bc2 = BusinessCity.create
-bc2.business = business1
-bc2.city = city
-
-
-bc.save
-bc1.save
-bc2.save
 
 
 # #-------------------------------------------------------------

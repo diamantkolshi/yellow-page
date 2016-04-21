@@ -4,7 +4,7 @@ RailsAdmin.config do |config|
   end
   config.current_user_method(&:current_user)
   
-  config.excluded_models = [ BusinessCategory, BusinessCity ,Commontator::Thread, Commontator::Comment, Commontator::Subscription, Search ]
+  config.excluded_models = [ BusinessCategory, BusinessAddress , BusinessProduct, Commontator::Thread, Commontator::Comment, Commontator::Subscription, Search ]
 
 
   config.model 'Business' do
@@ -22,6 +22,7 @@ RailsAdmin.config do |config|
     exclude_fields :threads  
     exclude_fields :raters_without_dimension
     exclude_fields :rate_raters 
+    exclude_fields :business_addresses
   end
 
   config.model 'Day' do 

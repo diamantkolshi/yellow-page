@@ -23,7 +23,7 @@ class SuggestEditsController < ApplicationController
   private
 
   def require_params
-    params.require(:suggest_edit).permit(:business_closed, :name, :city, :address, :established, :zip_code, :business_tel, :business_tele, :opening_hours, :website, :facebook, :instagram, :google)
+    params.require(:suggest_edit).permit(:business_closed, :name, :address, :address1, :zip_code, :business_tel, :business_tele, :opening_hours, :website, :facebook, :instagram, :google)
   end
 
   def business_id_exist?
