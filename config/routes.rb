@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   get 'search/index'
-  get 'rating/index'
+
+  resources :rating, only: [:index,:create,:update]
 
   get 'upload_photos/index'
 

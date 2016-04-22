@@ -26,7 +26,40 @@
                     <button id="getRating" class="btn btn-primary">Submit</button>
                 </form>
                 <% else %>
-                  <h4>You have rated for this business</h4>
+                <h4>Change your Rate:</h4>
+                  <form role="form">
+                    <div class="form-group">                   
+                        <div id="rateUserUpdate"></div>                      
+                    </div>
+                 <button id="getRatingUpdate" class="btn btn-primary">Update</button>
+                  </form>
+                    <script type="text/javascript">
+                        $(function () {
+
+                            $("#rateUserUpdate").rateYo({
+                                rating: <%= Rating.where(business_id: @business.id, user_id: current_user.id).first.score  %>,
+                            })
+                                          
+                          });
+
+                            $(function () {
+                                 
+                                var $rateUserupdate = $("#rateUserUpdate").rateYo();
+                                var $rateId = <%= Rating.where(business_id: @business.id, user_id: current_user.id).first.id %>
+
+                                $("#getRatingUpdate").click(function () {
+                                    var rating = $rateUserupdate.rateYo("rating");
+                                    $.ajax({
+                                        url: '/rating/'+$rateId,
+                                        type: 'PATCH',
+                                        data: { score: rating }
+                                });
+                              
+                            });
+                                 
+                         });
+
+                    </script>
                 <% end %>
             </div>
         <% else %>
@@ -93,12 +126,13 @@
                     /* get rating */
             var rating = $rateUser.rateYo("rating");
             $.ajax({
-                url: '/rating/index',
-                type: 'GET',
+                url: '/rating',
+                type: 'POST',
                 data: { score: rating, business_id: <%= @business.id %> }
             });
           
         });
              
     });
+    
 </script>
