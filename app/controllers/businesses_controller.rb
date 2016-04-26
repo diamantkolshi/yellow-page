@@ -5,7 +5,8 @@ class BusinessesController < ApplicationController
   end
 
   def show 
-  	@business = Business.find(params[:id])
+  	@business = Business.friendly.find(params[:id])
+    @business_addresses = Business.find(@business.id).addresses
     @suggest_photos = SuggestPhoto.where(business_id: params[:id], confirm: true)
   	commontator_thread_show(@business)
   	@types = Type.all

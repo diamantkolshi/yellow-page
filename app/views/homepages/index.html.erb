@@ -81,7 +81,7 @@
                   <%= image_tag business.logo_url, :class => "img-responsive"%>                  
                  <% end %>
                     <div class="caption">
-                        <h3><%= link_to business.name, business_path(business.id) %><br>
+                        <h3><%= link_to business.name, business_path(business) %><br>
                             <small></small>
                         </h3>
                         <p><%= business.description %></p>

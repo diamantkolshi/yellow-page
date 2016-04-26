@@ -48,7 +48,8 @@
      <!--    <p><i class="fa fa-clock-o"></i>
         <abbr title="Hours">Tomorrow</abbr>: 10:00 - 22:00
         </p> -->
-        <a href = "https://maps.google.com/maps?saddr=&daddr=<%# @business.latitude %>, <%# @business.longitude %>&dirflg=d" > Directions</a><br>
+        <a href = "https://maps.google.com/maps?saddr=&daddr=<%= @business.addresses.first.latitude %>, <%= @business.addresses.first.longitude %>&dirflg=d" > Directions</a><br>
+       
         <ul class="list-unstyled list-inline list-social-icons">
             <% unless @business.facebook.blank? %>
                 <li>

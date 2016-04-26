@@ -39,6 +39,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2' 
 gem "searchkick"
 gem 'jquery-ui-rails'
+gem 'friendly_id'
 
 
 group :development do
