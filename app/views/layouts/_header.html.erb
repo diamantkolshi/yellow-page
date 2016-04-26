@@ -19,31 +19,11 @@
            <% end %>
         <% end %>   
 
-        <button type="button" style="margin-top:8px;" class="btn btn-primary" data-toggle="collapse" data-target="#filter-panel">
+    
+        <%= link_to search_advanced_path, class: "btn btn-primary" , style: "margin-top: 8px;" do %>
             <i class="fa fa-cog"></i> Advanced Search
-        </button>
+        <% end %>
 
-        <div id="filter-panel" class="collapse filter-panel" style="padding-left:8%;;margin-top:1%;">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                  <%= form_tag("/search/index", method: "get", class: "form-inline" ) do %>
-                     <div class="form-group">
-                           <%= collection_select :category, :category_id, Category.all, :id, :name, {prompt: "Select Category"}, {class: "form-control", required: true} %>
-                        </div><!-- form group [search] -->
-                        <div class="form-group">
-                           <%= text_field_tag :city, params[:city],class: "form-control input-sm", placeholder: "City" %>                                          
-                            <%= text_field_tag :address, params[:address],class: "form-control input-sm", placeholder: "Adress" %>                                   
-                        </div> <!-- form group [order by] --> 
-                        <div class="form-group"> 
-                          <%= button_tag(type: "submit", class: "btn btn-default filter-col") do %>
-                            <i class="fa fa-search"></i>
-                          <% end %>
-                            
-                        </div>
-                   <% end %>
-                </div>
-            </div>
-        </div>
 
       </div>
 

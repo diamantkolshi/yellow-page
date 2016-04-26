@@ -7,13 +7,14 @@ Rails.application.routes.draw do
   get 'upload_photos/index'
 
   mount Commontator::Engine => '/commontator'
-
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   # mount RailsAdmin::Engine => 'admin/suggest_business/:id/edit', :as => :suggest_business 
   
   root 'homepages#index', as: "homepage"
  
-   get 'businesses/open'
+  get 'businesses/open'
+  get 'search/advanced'
+  get 'search/by_product'
 
   resources :businesses, only: [:index, :show]
   resources :suggest_businesses, only: [:new, :create]

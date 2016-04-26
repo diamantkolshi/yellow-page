@@ -1,7 +1,10 @@
 class Business < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   mount_uploader :logo, LogoUploader 
   
-  searchkick word_start: [:name]
+  searchkick suggest: [:name]
 
   paginates_per 4
  
@@ -19,14 +22,16 @@ class Business < ActiveRecord::Base
   has_many :working_days
 
   validates :name, presence: true
-  # validates :address, presence: true
 
-  # reverse_geocoded_by :latitude, :longitude
-  # after_validation :reverse_geocode
 
   after_create  :create_dir
   after_destroy :destroy_dir
 
+  def search_data
+    attributes.merge( 
+      product_name: products.map(&:name)
+    ) 
+  end
 
   def create_dir
      # dir_path = "#{Rails.public_path}/uploads/#{self.class.to_s.pluralize.downcase}/#{self.id}"
