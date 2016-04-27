@@ -18,9 +18,9 @@
 
 <% if @businesses.any? %>
   <h4 style="margin-left:8%;"><%= @businesses.size %>  businesses found</h4>
-  <% if @businesses.suggestions.any? %>
-    <h6 style="margin-left:8%;"> Did you mean: <%= link_to @businesses.suggestions.first,  search_index_path(query: @businesses.suggestions.first) %></h6>
-  <% end %>
+  <%#if @businesses.suggestions.any? %>
+    <!-- <h6 style="margin-left:8%;"> Did you mean: <%# link_to @businesses.suggestions.first,  search_index_path(query: @businesses.suggestions.first) %></h6> -->
+  <%# end %>
 	<% @businesses.each do |business| %>
 		<div class="row">	
 			<hr>
@@ -37,9 +37,10 @@
 				</h4>
 				<% unless business.addresses.blank? %> 
 					<p class="">
+					<% business.addresses.each do |address|  %>
 						<i class="fa fa-map-marker"></i>
-								<%= business.addresses.first.name %>					
-						<a href="#"> Get directions »</a>
+								<%= address.name %><br>	
+					<% end %>
 					</p>
 				<% end %>
 				<p><i class="fa fa-clock-o"></i> Posted on August 28, 2013 at 10:00 PM</p>
@@ -50,12 +51,11 @@
 							<li class="dropdown"><i class="fa fa-phone"></i>
 							  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Telephone<b class="caret"></b></a>
 								<ul class="dropdown-menu">
+								<% business.phones do |phone| %>
 									<li>
-										<a href="portfolio-1-col.html">Telephone 1</a>
+										<%= phone.number %>
 									</li>
-									<li>
-										<a href="portfolio-2-col.html">Telephone 2</a>
-									</li>
+								<% end %>
 								</ul>
 							</li>
 						</li>

@@ -44,13 +44,14 @@
                           
                     <div class="modal-body">
                                            
-                    <form id="registerForm" method="POST" >
-                         <div class="form-group">
+                    <%= form_tag("/search/index", method: "get", id: "registerForm" ) do %>                           
+                        <div class="form-group">
                             <div class="form-group"> 
                                     <div class="col-xs-12">
                                         <label for="InputEmail">What?</label>
                                         <div class="input-group">
-                                        <input type="email" class="form-control" name="email" placeholder="e.g. business name, category, phone number, product" required>
+                                        <%= text_field_tag :multi, params[:multi], :required => true,class: "form-control", id: "business_search", placeholder: "e.g. products name, email , category, post_code" , autocomplete: "off" %>
+
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                                     </div>
                                     
@@ -60,7 +61,7 @@
                             <div class="col-xs-6">
                                 <label for="InputName">Address</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="first_name" placeholder="Enter Address" required>
+                                        <%= text_field_tag :address, params[:address], :required => true,class: "form-control", id: "business_search", placeholder: "e.g. address name" , autocomplete: "off" %>
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                                     </div>
                                         <br>
@@ -72,7 +73,7 @@
 
                                 <label for="InputName">City</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="city" placeholder="Enter City" required>
+                                        <%= collection_select(:city, :city_id, City.all, :id, :name, {prompt: 'Select a city'}, {:class=>'form-control'}) %>
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                                     </div>
                                     
@@ -85,8 +86,8 @@
                                 <div class="form-group">
                                     <div class="col-xs-12">
                                         <label for="InputStreetName">website</label>
-                                        <div class="input-group">
-                                        <input type="text" class="form-control" name="street_name" placeholder="Enter Street Name and Number" required>
+                                        <div class="input-group">                                        
+                                        <input type="text" class="form-control" name="street_name" placeholder="Enter Street Name and Number" >
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                                         </div>
                                     <br> 
@@ -97,7 +98,7 @@
                                     <div class="col-xs-12">
                                         <label for="InputStreetName">facebook</label>
                                         <div class="input-group">
-                                        <input type="text" class="form-control" name="street_name" placeholder="Enter Street Name and Number" required>
+                                        <input type="text" class="form-control" name="street_name" placeholder="Enter Street Name and Number" >
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                                         </div>
                                     <br> 
@@ -107,11 +108,13 @@
 
                                 <div class="form-group">
                                   <div class="input-group-addon">
-                                  <input type="submit" name="submit" id="submit" value="Search" class="btn btn-success pull-right">
+                                    <%= button_tag(type: "submit", class: "btn btn-success pull-right") do %>
+                                        Search <i class="fa fa-search"></i>
+                                    <% end %>
                                   
                                   </div>
                                 </div>
-                            </form>
+                            <% end %>
                         </div>
                     </div>
                 </div>

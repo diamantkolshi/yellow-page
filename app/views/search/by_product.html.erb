@@ -45,32 +45,34 @@
                     <div class="modal-body">
                         <%= form_tag("/search/index", method: "get", id: "registerForm" ) do %>                   
                      
-                             <div class="form-group">
-                                <div class="form-group"> 
-                                        <div class="col-xs-12">
-                                            <label for="InputEmail">Products?</label>
-                                            <div class="input-group">
-                                            <input type="text" class="form-control" name="email" placeholder="e.g. products name, price" required>
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                                        </div>
-                                        
-                                    <br>
+                        <div class="form-group">
+                            <div class="form-group"> 
+                                    <div class="col-xs-12">
+                                        <label for="InputEmail">Products?</label>
+                                        <div class="input-group">
+                                        <%= text_field_tag :product, params[:product], :required => true,class: "form-control", id: "business_search", placeholder: "e.g. products name" , autocomplete: "off" %>
+
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                                     </div>
+                                        
+                                <br>
                                 </div>
+                            </div>
                                 
 
-                                    <div class="form-group">
-                                      <div class="input-group-addon">
-                                      <input type="submit" name="submit" id="submit" value="Search" class="btn btn-success pull-right">
-                                      
-                                      </div>
-                                    </div>
-                        <% end %>
+                            <div class="form-group">
+                                <div class="input-group-addon">
+                                <%= button_tag(type: "submit", class: "btn btn-success pull-right") do %>
+                                    Search <i class="fa fa-search"></i>
+                                <% end %>
+                                 </div>
+                            </div>
+                            <% end %>
+                        </div>
                     </div>
-                </div>
-            </div>                            
+                </div>                            
+            </div>
         </div>
-    </div>
         <!-- /.row -->
 
         <hr>
@@ -88,3 +90,17 @@
     <!-- /.container -->
 
 
+
+
+ <script type="text/javascript">
+   $(function() {
+     $( "#business_search" ).autocomplete({
+    <% ac_businesses = Business.all %>
+     source: [
+      <%ac_businesses.each do |b| %>
+     { label: "<%=  b.name %>", value: "<%=b.name %>" },
+     <% end %>
+     ]
+     });
+   });   
+ </script>

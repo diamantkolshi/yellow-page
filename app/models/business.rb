@@ -4,7 +4,7 @@ class Business < ActiveRecord::Base
 
   mount_uploader :logo, LogoUploader 
   
-  searchkick suggest: [:name]
+  searchkick 
 
   paginates_per 4
  
@@ -19,18 +19,25 @@ class Business < ActiveRecord::Base
   has_many :phones
   has_many :photos
   has_many :videos
-  has_many :working_days
+  has_many :working_days 
 
   validates :name, presence: true
 
-
   after_create  :create_dir
   after_destroy :destroy_dir
+  after_save :reindex_business
+
+  def reindex_business
+     Business.reindex
+  end
 
   def search_data
-    attributes.merge( 
-      product_name: products.map(&:name)
-    ) 
+      attributes.merge( 
+        product_name: products.map(&:name),
+        address_name: addresses.map(&:name),
+        city_id: addresses.map(&:city_id),
+        category_name: categories.map(&:name)
+      ) 
   end
 
   def create_dir
@@ -44,15 +51,15 @@ class Business < ActiveRecord::Base
 
   def open
     if self.working_days == []
-          return []
+      return []
     else
       if self.working_days != []
       self.working_days.each do |wd|
            wd.day.name.capitalize == Time.now.strftime("%A")
-        if (wd.open.strftime("%H:%M")..wd.close.strftime("%H:%M")).include?(Time.now.strftime("%H:%M"))
-          return true
-        else
-          return false
+          if (wd.open.strftime("%H:%M")..wd.close.strftime("%H:%M")).include?(Time.now.strftime("%H:%M"))
+            return true
+          else
+            return false
           end
         end 
       end
