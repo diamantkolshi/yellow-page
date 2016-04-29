@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'businesses/open'
   get 'search/advanced'
   get 'search/by_product'
+  get 'search/filter'
 
   resources :businesses, only: [:index, :show]
   resources :suggest_businesses, only: [:new, :create]

@@ -12,7 +12,6 @@ class SearchController < ApplicationController
       city = Business.search(params[:city], fields: [:city_id]).results
 
       @businesses = multi & address & city
-      as
     end
   end
 
@@ -20,6 +19,17 @@ class SearchController < ApplicationController
     Business.reindex
   end
 
+  def filter  
+    category_name = params[:category]
+    city = params[:city].to_i
+    @open = true if params[:open].present?
+    @highest_rated = true if params[:rating].present?
+   
+    @businesses = Business.search(where:{
+      category_name: category_name,
+      city_id: city 
+    }).results
+  end
 end
 
 

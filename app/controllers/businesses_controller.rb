@@ -32,7 +32,6 @@ class BusinessesController < ApplicationController
       0
     end
   end
-
 end
 
 
