@@ -1,5 +1,4 @@
 class SearchController < ApplicationController
-  before_action :business_reindex
 
   def index
     if params[:query].present?
@@ -13,22 +12,26 @@ class SearchController < ApplicationController
 
       @businesses = multi & address & city
     end
-  end
-
-  def business_reindex
-    Business.reindex
+    
+    if params[:businesses].present?
+      @businesses = Business.where(slug: params[:businesses])
+      @open = params[:open]
+    end
   end
 
   def filter  
     category_name = params[:category]
     city = params[:city].to_i
     @open = true if params[:open].present?
-    @highest_rated = true if params[:rating].present?
-   
+    @rate = params[:rate] if params[:rate].present?
+    
     @businesses = Business.search(where:{
       category_name: category_name,
-      city_id: city 
-    }).results
+      city_id: city
+    }).results    
+    
+  
+    redirect_to action: 'index', businesses: @businesses, open: @open, rate: @rate
   end
 end
 

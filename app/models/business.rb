@@ -27,6 +27,7 @@ class Business < ActiveRecord::Base
   after_destroy :destroy_dir
   after_save :reindex_business
 
+
   def reindex_business
      Business.reindex
   end

@@ -73,8 +73,9 @@ ActiveRecord::Schema.define(version: 20160425183321) do
     t.string   "email"
     t.integer  "nr_of_employess"
     t.string   "payment_mathod"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.decimal  "average_rate",    default: 0.0
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "slug"
   end
 

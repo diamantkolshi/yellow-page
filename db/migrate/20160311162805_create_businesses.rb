@@ -15,7 +15,8 @@ class CreateBusinesses < ActiveRecord::Migration
       t.string  :established
       t.string  :email
       t.integer :nr_of_employess
-      t.string  :payment_mathod        
+      t.string  :payment_mathod
+      t.decimal :average_rate, default: 0       
 
       t.timestamps null: false
     end

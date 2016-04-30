@@ -57,7 +57,7 @@
                         <div class="panel panel-default alert alert-warning alert-dismissible">
                           <div class="panel-body">
                             <% @user_ratings.each do |rate| %>
-                                <h3 style="color:#3366ff"><%= link_to Business.find(rate.business_id).name, business_path(rate.business_id) %></h3>
+                                <h3 style="color:#3366ff"><%= link_to Business.find(rate.business_id).name, business_path(Business.find(rate.business_id)) %></h3>
                                 <h5><% Business.find(rate.business_id).addresses.each do |address| %>
                                    <i class="fa fa-map-marker" aria-hidden="true"></i> <%= address.name %><br>
                                 <% end %></h5>
