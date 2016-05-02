@@ -1,65 +1,62 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-   <!-- Header Carousel -->
-    <header>     
-      <div class="container">
-        <div class="row header-nav">
-          <div class="col-md-3 text-left nav-item">
-            <a href="<%= root_path %>"><%= image_tag "logo-sample.png" %></a>
-          </div>
-          
-          <div class="col-md-6 text-center nav-item">
-            <ul class="list-inline list-styled header-list">
-              <li><a href="">Apps</a></li>
-              <li><a href="">Gadgets</a></li>
-              <li><a href="">Science</a></li>
-              <li>
-                <%= link_to  new_suggest_business_path do %>
-                  <i class="fa fa-plus"></i> 
-                  Suggest Business
-                <% end %>
-              </li>
-            </ul>
-          </div>
-    
-          <div class="col-md-3 text-right nav-item">         
+<%= render 'layouts/sign_in' %>
 
-            <% if !current_user %>
-            <li><button type="button" class="btn btn-default navbar-btn" style="margin-right:10px;" data-toggle="modal" data-target="#SigninModal">Sign in</button></li>
-            <% else %>
-             <div class="header-dropdown">
-              <a href="#" data-toggle="dropdown">
-                <%= image_tag "dropdown-icon.png" %>
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="dLabel">
+<header>     
+  <div class="container">
+    <div class="row header-nav">
+      <div class="col-md-3 text-left nav-item">
+        <a href="<%= root_path %>"><%= image_tag "logo-sample.png" %></a>
+      </div>
+      
+      <div class="col-md-6 text-center nav-item">
+        <ul class="list-inline list-styled header-list">
+          <li><a href="">Apps</a></li>
+          <li><a href="">Gadgets</a></li>
+          <li><a href="">Science</a></li>
+          <li>
+            <%= link_to  new_suggest_business_path do %>
+              <i class="fa fa-plus"></i> 
+              Suggest Business
+            <% end %>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 text-right nav-item">         
+
+        <% if !current_user %>
+        <li><button type="button" class="btn btn-default navbar-btn" style="margin-right:10px;" data-toggle="modal" data-target="#SigninModal">Sign in</button></li>
+        <% else %>
+         <div class="header-dropdown">
+          <a href="#" data-toggle="dropdown">
+            <%= image_tag "dropdown-icon.png" %>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dLabel">
+            <li>
+              <%= link_to profiles_path  do %>
+                <i class="fa fa-male"></i>
+                  Profile
+              <% end %>
+            </li>
+              <% if current_user.admin? %>
                 <li>
-                  <%= link_to profiles_path  do %>
-                    <i class="fa fa-male"></i>
-                      Profile
+                  <%= link_to rails_admin_path  do %>
+                    <i class="fa fa-lock"></i>
+                    Administration
+              <% end %>
+            </li> 
+              <% end %>
+                <li>
+                  <%= link_to destroy_user_session_path, :method => :delete  do %>
+                    <i class="fa fa-sign-out"></i>
+                    Sign out
                   <% end %>
                 </li>
-                  <% if current_user.admin? %>
-                    <li>
-                      <%= link_to rails_admin_path  do %>
-                        <i class="fa fa-lock"></i>
-                        Administration
-                  <% end %>
-                </li> 
-                  <% end %>
-                    <li>
-                      <%= link_to destroy_user_session_path, :method => :delete  do %>
-                        <i class="fa fa-sign-out"></i>
-                        Sign out
-                      <% end %>
-                    </li>
-              </ul>
+          </ul>
 
-            <% end %>
-           
-            </div>
-          </div>
+        <% end %>
+       
         </div>
-      </div>      
-  </header>
-
-
-  </nav>
+      </div>
+    </div>
+  </div>      
+</header>
