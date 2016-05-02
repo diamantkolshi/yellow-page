@@ -9,9 +9,25 @@
     config/locales/en.yml. For more see:
     https://github.com/calebthompson/title#usage
   %>
+
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "jquery.rateyo.css", media: "all" %>
+
+
+    <%# stylesheet_link_tag "blueimp-gallery.min.css", media: "all" %>
+    <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+
+    
+    <!-- inside javascript -->
+    <%= javascript_include_tag 'jquery.js', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'jquery_ujs.js', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'jquery.rateyo.js', 'data-turbolinks-track' => true %>
+
     <%= favicon_link_tag 'YPIcon.ico' %>
     <%= stylesheet_link_tag "toolkit.css" %>
     <%= javascript_include_tag "toolkit.js" %>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
