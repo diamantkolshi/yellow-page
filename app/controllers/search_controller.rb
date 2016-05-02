@@ -17,8 +17,7 @@ class SearchController < ApplicationController
       @businesses = Business.where(slug: params[:businesses])
       @open = params[:open]
     end
-
-    @businesses = [ Business.first ]
+        
   end
 
   def filter  
@@ -32,7 +31,7 @@ class SearchController < ApplicationController
       city_id: city
     }).results    
     
-  
+    asda
     redirect_to action: 'index', businesses: @businesses, open: @open, rate: @rate
   end
 end

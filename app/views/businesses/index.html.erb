@@ -29,7 +29,11 @@
                  <% @businesses.each do |business| %>
                     <div class="col-xs-4">
                         <div class="thumbnail">
-                        <img src="http://lorempixel.com/400/290/food/6" alt="...">
+                        <% if business.logo.blank? %>
+                          <%= image_tag "nologo.png", width: "80%", height: "90px"%>
+                        <% else %>
+                          <%= image_tag business.logo_url, width: "80%", height: "90px"%>
+                        <% end %>
                         <div class="caption">
                           <h4><%= business.name %></h4>
                           <h6><%= business.description %></h6>

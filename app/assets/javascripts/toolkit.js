@@ -62,7 +62,7 @@
 		$amountRange.slider({
 			range: true,
 			min: 0,
-			max: 500,
+			max: 5,
 			slide: function slide(event, ui) {
 				$toAmount.val(ui.values[1]);
 				$fromAmount.val(ui.values[0]);
@@ -75,8 +75,8 @@
 			$amountRange.slider('values', [$fromAmount.val(), $toAmount.val()]).change();
 		}
 
-		$fromAmount.val(70);
-		$toAmount.val(300);
+		$fromAmount.val(1);
+		$toAmount.val(4);
 		updateAmountRange();
 	});
 
