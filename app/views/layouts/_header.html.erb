@@ -1,102 +1,65 @@
-  <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <%= link_to "YP", root_path, class: "navbar-brand"%>
-        <%= form_tag("/search/index", method: "get", class: "navbar-form navbar-left" ) do %>
-           <div class="form-group center">
-            <%= text_field_tag :query, params[:query], :required => true,class: "form-control", style: "width:400px;", id: "business_search", placeholder: "Business name", autocomplete: "off" %>
-            </div>
-           <%= button_tag(type: "submit", class: "btn btn-primary") do %>
-                <i class="fa fa-search"></i>
-           <% end %>
-        <% end %>   
-
-    
-        <%= link_to search_advanced_path, class: "btn btn-primary" , style: "margin-top: 8px;" do %>
-            <i class="fa fa-cog"></i> Advanced Search
-        <% end %>
-
-
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <%= link_to  new_suggest_business_path, class: "btn"  do %>
-             <i class="fa fa-plus"></i> 
-               Suggest Business
-             <% end %>
-          </li>
-         <!-- <li><button type="button" class="btn btn-primary navbar-btn" style="margin-right:10px;" data-toggle="modal" data-target="#SugestModal"> -->
-              <!-- Sugest business</button></li> -->
-      <% if !current_user %>
-        <li><button type="button" class="btn btn-default navbar-btn" style="margin-right:10px;" data-toggle="modal" data-target="#SigninModal">Sign in</button></li>
-      <% else %>
-        <li class="dropdown">
-           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"> <%= current_user.email %></i><b class="caret"></b></a>
-           <ul class="dropdown-menu">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+   <!-- Header Carousel -->
+    <header>     
+      <div class="container">
+        <div class="row header-nav">
+          <div class="col-md-3 text-left nav-item">
+            <a href="<%= root_path %>"><%= image_tag "logo-sample.png" %></a>
+          </div>
+          
+          <div class="col-md-6 text-center nav-item">
+            <ul class="list-inline list-styled header-list">
+              <li><a href="">Apps</a></li>
+              <li><a href="">Gadgets</a></li>
+              <li><a href="">Science</a></li>
               <li>
-                <%= link_to profiles_path  do %>
-                  <i class="fa fa-male"></i>
-                  Profile
+                <%= link_to  new_suggest_business_path do %>
+                  <i class="fa fa-plus"></i> 
+                  Suggest Business
                 <% end %>
               </li>
-              <% if current_user.admin? %>
+            </ul>
+          </div>
+    
+          <div class="col-md-3 text-right nav-item">         
+
+            <% if !current_user %>
+            <li><button type="button" class="btn btn-default navbar-btn" style="margin-right:10px;" data-toggle="modal" data-target="#SigninModal">Sign in</button></li>
+            <% else %>
+             <div class="header-dropdown">
+              <a href="#" data-toggle="dropdown">
+                <%= image_tag "dropdown-icon.png" %>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="dLabel">
                 <li>
-                  <%= link_to rails_admin_path  do %>
-                    <i class="fa fa-lock"></i>
-                    Administration
+                  <%= link_to profiles_path  do %>
+                    <i class="fa fa-male"></i>
+                      Profile
+                  <% end %>
+                </li>
+                  <% if current_user.admin? %>
+                    <li>
+                      <%= link_to rails_admin_path  do %>
+                        <i class="fa fa-lock"></i>
+                        Administration
                   <% end %>
                 </li> 
-              <% end %>
-              <li>
-                <%= link_to destroy_user_session_path, :method => :delete  do %>
-                  <i class="fa fa-sign-out"></i>
-                  Sign out
-                <% end %>
-              </li>
-              
-            </ul>
-          </li>
-      <% end %>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-    </nav>
+                  <% end %>
+                    <li>
+                      <%= link_to destroy_user_session_path, :method => :delete  do %>
+                        <i class="fa fa-sign-out"></i>
+                        Sign out
+                      <% end %>
+                    </li>
+              </ul>
+
+            <% end %>
+           
+            </div>
+          </div>
+        </div>
+      </div>      
+  </header>
 
 
-     <%= render "layouts/sign_in" %>
-     <%# render "layouts/suggest_business" %>
-
-
- <script type="text/javascript">
-   $(function() {
-     $( "#business_search" ).autocomplete({
-    <% ac_businesses = Business.all %>
-     source: [
-      <%ac_businesses.each do |b| %>
-     { label: "<%=b.name %>", value: "<%=b.name %>" },
-     <% end %>
-     ]
-     });
-   });   
- </script>
-
-
-
-
-
-
-
-
-
-
+  </nav>
