@@ -4,7 +4,7 @@ class Business < ActiveRecord::Base
 
   mount_uploader :logo, LogoUploader 
   
-  # searchkick 
+  searchkick 
 
   paginates_per 4
  
@@ -33,12 +33,12 @@ class Business < ActiveRecord::Base
   end
 
   def search_data
-      attributes.merge( 
-        product_name: products.map(&:name),
-        address_name: addresses.map(&:name),
-        city_id: addresses.map(&:city_id),
-        category_name: categories.map(&:name)
-      ) 
+    attributes.merge( 
+      product_name: products.map(&:name),
+      address_name: addresses.map(&:name),
+      city_id: addresses.map(&:city_id),
+      category_name: categories.map(&:name)
+    ) 
   end
 
   def create_dir

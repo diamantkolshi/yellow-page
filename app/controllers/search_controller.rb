@@ -17,6 +17,8 @@ class SearchController < ApplicationController
       @businesses = Business.where(slug: params[:businesses])
       @open = params[:open]
     end
+
+    @businesses = [ Business.first ]
   end
 
   def filter  
