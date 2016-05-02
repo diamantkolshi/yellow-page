@@ -4,7 +4,7 @@ class Business < ActiveRecord::Base
 
   mount_uploader :logo, LogoUploader 
   
-  searchkick 
+  # searchkick 
 
   paginates_per 4
  
