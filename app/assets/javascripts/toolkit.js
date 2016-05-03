@@ -75,9 +75,37 @@
 			$amountRange.slider('values', [$fromAmount.val(), $toAmount.val()]).change();
 		}
 
-		$fromAmount.val(1);
-		$toAmount.val(4);
+		$fromAmount.val(0);
+		$toAmount.val(2);
 		updateAmountRange();
+
+		var sliderOptions = {
+			fx: 'fade',
+			width: '100%',
+			speed: 900,
+			timeout: 0,
+			pager: '#details-nav',
+			next: '#next2',
+			prev: '#prev2'
+		};
+		$('.detail-slider').after('<div id="details-nav">').cycle(sliderOptions);
+
+		$('.detail-slider').imagesLoaded(function () {
+			$('.detail-slider').cycle('destroy');
+			$('.detail-slider').cycle(sliderOptions);
+		});
+
+		$('.dropdown-toggle').dropdown();
+
+		$('.users img').each(function (i, el) {
+			if (i < 5) {
+				$(el).css({ 'z-index': 100000 - i,
+					'margin-left': i * 20 + 'px'
+				});
+			} else {
+				$(el).css('display', 'none');
+			}
+		});
 	});
 
 /***/ },
