@@ -10,8 +10,11 @@
       <div class="col-md-6 text-center nav-item">
         <ul class="list-inline list-styled header-list">
           <li><a href="">Apps</a></li>
-          <li><a href="">Gadgets</a></li>
-          <li><a href="">Science</a></li>
+          <li>
+            <%= link_to  search_advanced_path do %>
+              Advanced Serach
+            <% end %>
+          </li>
           <li>
             <%= link_to  new_suggest_business_path do %>
               <i class="fa fa-plus"></i> 

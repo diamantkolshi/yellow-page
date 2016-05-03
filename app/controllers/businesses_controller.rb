@@ -12,6 +12,7 @@ class BusinessesController < ApplicationController
   	@types = Type.all
   	@products = @business.products.all
   	@business_products = BusinessProduct.all
+    
     # @business_rate = Rate.where(rateable_id: @business.id)
     @rating = Rating.where(business_id: Business.find_by(slug: params[:id]).id).order(created_at: :desc)
 
