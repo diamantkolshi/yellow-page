@@ -74,62 +74,20 @@
                                             <ul class="nav nav-tabs detail-tabs-ul" role="tablist">
                                                 <li role="presentation"><a href="#details" aria-controls="home" role="tab" data-toggle="tab" class="h6 strong">Business Details</a></li>
                                                 <li role="presentation"  class="active"><a href="#gallery" aria-controls="profile" role="tab" data-toggle="tab" class="h6 strong">Gallery</a></li>
+                                                <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab" class="h6 strong">Video</a></li>
                                                 <li role="presentation"><a href="#reviews" aria-controls="messages" role="tab" data-toggle="tab" class="h6 strong">Reviews</a></li>
                                             </ul>
                                             <div class="tab-content">
-                                                <div role="tabpanel" class="tab-pane" id="details">Business Details</div>
+
+
+                                                <div role="tabpanel" class="tab-pane" id="details">
+                                                    <%= render "details" %> 
+                                                </div>
                                                 <div role="tabpanel" class="tab-pane active" id="gallery">
-                                                    <div class="row no-margin">
-                                                        <div class="col-xs-4">
-                                                            <a href="#"><img width="280" height="280" src="http://lorempixel.com/280/280/abstract/2" alt=""></a>
-                                                            <h6 class="strong">Anderson .Paak</h6>
-                                                            <h6 class="strong gray-h6">Malibu</h6>
-                                                        </div>
-                                                        <div class="col-xs-4">
-                                                            <div class="mini-item">
-                                                                <a href="#"><img width="130" height="130" src="http://lorempixel.com/130/130/abstract/3" alt=""></a>
-                                                                <ul>
-                                                                    <li><h6 class="strong">Anderson .Paak</h6></li>
-                                                                    <li><h6 class="strong gray-h6">Malibu</h6></li>
-                                                                    <li><h6 class="strong gray-h6">Art Club, 2014</h6></li>
-                                                                    <li class="rate-form dark">8.5</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xs-4">
-                                                            <div class="mini-item">
-                                                                <a href="#"><img width="130" height="130" src="http://lorempixel.com/130/130/abstract/3" alt=""></a>
-                                                                <ul>
-                                                                    <li><h6 class="strong">Anderson .Paak</h6></li>
-                                                                    <li><h6 class="strong gray-h6">Malibu</h6></li>
-                                                                    <li><h6 class="strong gray-h6">Art Club, 2014</h6></li>
-                                                                    <li class="rate-form ">8.5</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xs-4">
-                                                            <div class="mini-item">
-                                                                <a href="#"><img width="130" height="130" src="http://lorempixel.com/130/130/abstract/3" alt=""></a>
-                                                                <ul>
-                                                                    <li><h6 class="strong">Anderson .Paak</h6></li>
-                                                                    <li><h6 class="strong gray-h6">Malibu</h6></li>
-                                                                    <li><h6 class="strong gray-h6">Art Club, 2014</h6></li>
-                                                                    <li class="rate-form dark">8.5</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xs-4">
-                                                            <div class="mini-item">
-                                                                <a href="#"><img width="130" height="130" src="http://lorempixel.com/130/130/abstract/3" alt=""></a>
-                                                                <ul>
-                                                                    <li><h6 class="strong">Anderson .Paak</h6></li>
-                                                                    <li><h6 class="strong gray-h6">Malibu</h6></li>
-                                                                    <li><h6 class="strong gray-h6">Art Club, 2014</h6></li>
-                                                                    <li class="rate-form ">8.5</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <%= render "gallery" %>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane" id="video">
+                                                    <%= render "videos" %>
                                                 </div>
                                                 <div role="tabpanel" class="tab-pane" id="reviews">Reviews TEST</div>
                                             </div>
@@ -220,9 +178,11 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <ul class="list-inline filter-ul" >
-                            <li><span class="label filter-labels label-green">Technology</span></li>
-                            <li><span class="label filter-labels label-emerald">Art</span></li>
-                            <li><span class="label filter-labels label-purple">Birds</span></li>
+                            <% @business.categories.each do |category| %>
+                                <li><span class="label filter-labels label-green"><%= category.name %></span></li>
+                         <!--   <li><span class="label filter-labels label-emerald">Art</span></li>
+                                <li><span class="label filter-labels label-purple">Birds</span></li> -->
+                            <% end %>
                         </ul>
                     </div>
                     <div class="col-xs-7 vert-offset-top-5">

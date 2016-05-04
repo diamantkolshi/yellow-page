@@ -1,0 +1,20 @@
+<div class="container">
+<div class="col-lg-11">
+<div id="myTabContent" class="tab-content">
+        <!-- Blog Post Video -->
+        <div class="row">
+            <% unless @business.videos.blank? %>
+            <!-- <div class="col-md-2"></div>  -->
+            <div class="col-md-4">
+                <% @business.videos.each do |video| %>
+                <iframe width="360" height="215" src="<%= video.source %>" frameborder="0" allowfullscreen></iframe>
+                <% end %>
+            </div>
+            <% else %>
+            <div class="alert alert-info text-center" role="alert"><%= @business.name %> has no videos</div>
+            <% end %>
+        </div>
+
+</div>
+</div>
+</div>
