@@ -1,25 +1,31 @@
- <br><br>          
-      <div class="main">
-              <h3>Please Log In, or <a href="#">Sign Up</a></h3>
-              <div class="login-or">
-                <hr class="hr-or">
-                <span class="span-or">or</span>
-              </div>
-            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                <div class="form-inputs">
-                  <%= f.input :email, required: true, autofocus: true %>
-                  <%= f.input :password, required: true %>
-                  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-                      <%= link_to "Forgot your password?", new_password_path(resource_name) %>  
-                  <% end -%>    
-                  <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-                   <div class="pull-right">
-                  	<%= f.button :submit, "Log in" %>
-	              	<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-	                	<%= link_to "Sign up", new_registration_path(resource_name) %><br />
-	              	<% end -%>  
-	               </div>      
-                </div>                         
-             </div>         
-          <% end %>
-      </div>
+ <div id="wrapper">
+    <div class="join">Sign In</div>
+            <div class="clr"></div>
+                <div class="login-options">Choose one of the following sign in methods.</div>
+                    <a class="twitter" href="#">Twitter</a>
+                    <a class="facebook" href="#">Facebook</a>
+                     <%= link_to  user_google_oauth2_omniauth_authorize_path do %>
+                        <div class="google">Google+</div>
+                    <% end %>
+                    <div class="clr"><hr /></div>
+                            <div class="mail-text">Or sign up using your email address.</div>
+
+                <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                        <div class="forms">
+                        <%= f.input :email, autofocus: true ,name: "email", type: "text", placeholder: "Write your email here", size: "70", onClick: "border: 1px solid #30a8da;", id:"mail" %>
+                         <%= f.input :password, name: "password", type: "password", placeholder: "Write your password...", size: "70", onClick: "border: 1px solid #30a8da;", id: "password" %>
+                           
+                  <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>     
+                        </div>
+                        <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+                            <i class="icon-ok icon-white"></i> Log In  
+                        <% end %> 
+                  <label> or you can  </label>   
+                        <%= link_to "Register", new_user_registration_path %>
+                 <% end %>   
+</div>  
+    
+    
+    
+    
+    
