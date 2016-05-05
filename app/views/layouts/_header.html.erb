@@ -26,7 +26,7 @@
 
       <div class="col-md-3 text-right nav-item">         
 
-        <% if !current_user %>
+        <% unless current_user %>
         <li>
          <%= link_to new_user_session_path do %>
           <button type="button" class="btn btn-default navbar-btn" style="margin-right:10px;">Sign In</button>

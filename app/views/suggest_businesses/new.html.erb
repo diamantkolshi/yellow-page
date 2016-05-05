@@ -1,35 +1,31 @@
 
-<br><br>
-  <div class="main">
-    <h3>Suggest your <a href="#">business</a></h3>
-      <div class="login-or">
-        <hr class="hr-or">
-        <span class="span-or">+</span>
-      </div>
-      <%= simple_form_for(@suggest_business, url: suggest_businesses_path) do |f| %>
-        <div class="form-inputs">
-          <%= f.input :name, label: "Business name",required: true, autofocus: true %>
-          <% if current_user %>
-            <%= f.input :email, :input_html => { value: current_user.email },required: true %>
-          <% else %>
-            <%= f.input :email, required: true %>        
-          <% end %>
-          <%= f.input :tel, required: true %>
-          <%= f.input :message, maxlength: 255 %>             
-        
-        </div><br><br>
-        <div class="modal-footer">
-          <%= link_to  "Cancel", root_path , html_options: { class: "btn" } %>   
-          <%= f.button :submit, "Send", class: "btn-primary" %>   
-        </div>      
-      </div>                       
-   </div>   
- <% end %>
-</div>
+ <div id="wrapper">
+    <div class="join" style="margin-left: 99px;">Suggest your Business</div>
+                <div class="clr"></div>
 
+                <%= simple_form_for(@suggest_business, url: suggest_businesses_path) do |f| %>
+                        <div class="forms" style="margin-left: 83px;">
+                        <label> Business Name</label>
+                        <%= f.input :name,  label: false, placeholder: "Business name", required: true, autofocus: true %>
+                        <% if current_user %>
+                        <label> Email</label>
+                        <%= f.input :email, label: false, placeholder: "Email", :input_html => { value: current_user.email },required: true %>
+                          <% else %> 
+                        <label> Email</label>
+                          <%= f.input :email, label: false, placeholder: "Email", required: true %>        
+                        <% end %>
+                        <label> Telephone</label>
+          <%= f.input :tel, placeholder: "Tel", label: false, required: true %>
+                        <label> Message </label>
+          <%= f.input :message, placeholder: "Write your message", label: false, maxlength: 255 %>      
+          <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+                <i class="icon-ok icon-white"></i> Send  
+          <% end %>   
+          <% end %>   
+          <%= link_to  "Cancel", root_path , html_options: { class: "btn" } %>         
 
-
-
-
-
-
+</div>  
+    
+    
+    
+    
