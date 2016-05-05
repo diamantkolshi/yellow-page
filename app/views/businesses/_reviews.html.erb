@@ -1,19 +1,6 @@
-<div class="container" style="padding:50px;">
-    <div class="msg"><span class="glyphicon glyphicon-ok"></span> Reviews</div>
-    <div class="col-lg-12">
-        <ul id="myTab" class="nav nav-tabs nav-justified">
-            <li class="active"><a href="#service-3" data-toggle="tab">Comment</i></a>
-        </li>
-        <li class=""><a href="#service-4" data-toggle="tab"> Rating</a> </a>
-    </li>
-</ul>
-<div id="myTabContent" class="tab-content">
-    <div class="tab-pane fade active in" id="service-3"><br><br>
-        <div class="row">
-            <%= commontator_thread(@business) %>
-        </div>
-    </div>
-    <div class="tab-pane fade" id="service-4"><br><br>
+<div class="container">
+
+      <div class="col-lg-11">
         <div class="row">
          <% if current_user %>
             <div class="well">                
@@ -53,10 +40,8 @@
                                         url: '/rating/'+$rateId,
                                         type: 'PATCH',
                                         data: { score: rating }
-                                });
-                              
-                            });
-                                 
+                                });                              
+                            });                                 
                          });
 
                     </script>
@@ -98,9 +83,9 @@
                 </script>
               </div>
         <% end %>
-    </div>
 
-        
+
+        </div>
         <!-- <div class="alert alert-info text-center" role="alert"> No reviews</div>                            -->
     </div>
 

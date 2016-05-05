@@ -35,7 +35,7 @@
                           <%= image_tag business.logo_url, width: "80%", height: "90px"%>
                         <% end %>
                         <div class="caption">
-                          <h4><%= business.name %></h4>
+                          <h4><%= link_to business.name, business_path(business) %></h4>
                           <h6><%= business.description %></h6>
                           <div class="vert-offset-top-2"></div>             
                           <ul class="list-inline likes-ul">

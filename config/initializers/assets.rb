@@ -10,6 +10,9 @@ Rails.application.config.assets.precompile += %w( toolkit.js )
 Rails.application.config.assets.precompile += %w( default.css )
 Rails.application.config.assets.precompile += %w( jquery.rateyo.css )
 Rails.application.config.assets.precompile += %w( blueimp-gallery.min.css )
+Rails.application.config.assets.precompile += %w( bootstrap.min.css )
+
+
 Rails.application.config.assets.precompile += %w( dependent_fields.js )
 Rails.application.config.assets.precompile += %w( jquery.blueimp-gallery.min.js )
 
