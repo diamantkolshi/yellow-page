@@ -1,0 +1,3 @@
+$('#com')
+.append(("<%= escape_javascript(render :partial => 'comments/comment', locals: { comment: @comment }) %>"));
+$("#comment_field").val("")

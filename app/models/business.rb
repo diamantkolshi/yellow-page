@@ -4,7 +4,7 @@ class Business < ActiveRecord::Base
 
   mount_uploader :logo, LogoUploader 
   
-  searchkick 
+  # searchkick 
 
   paginates_per 4
  
@@ -20,6 +20,7 @@ class Business < ActiveRecord::Base
   has_many :photos
   has_many :videos
   has_many :working_days 
+  has_many :comments
 
   validates :name, presence: true
 

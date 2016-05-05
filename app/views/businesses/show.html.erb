@@ -1,154 +1,146 @@
-
-
-        <div class="single-hero">
-            <div class="container">
-                <div class="row">                    
-                    <div class="col-xs-6 single-hero-title"><h2><%= @business.name %></h2></div>
-                </div>
+<div class="single-hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 single-hero-title"><h2><%= @business.name %></h2></div>
+        </div>
+    </div>
+</div>
+<div class="section-tabs sigle-tabs">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-12">
+                <ul class="list-inline filter-ul">
+                    <li><h5 class="roboto"><a href="#">Business</a></h5></li>
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <li><h5 class="roboto"><a href="#"><%= @business.name %></a></h5></li>
+                </ul>
             </div>
         </div>
-        <div class="section-tabs sigle-tabs">
-            <div class="container">
-                <div class="row">
-                    
-                    <div class="col-md-12">
-                        <ul class="list-inline filter-ul">
-                            <li><h5 class="roboto"><a href="#">Business</a></h5></li>
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            <li><h5 class="roboto"><a href="#"><%= @business.name %></a></h5></li>
-                        </ul>
-                    </div>
+    </div>
+</div>
+<div class="single-page-bg-color">
+    <div class="single-details">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-xs-12">
+                    <ul class="single-details-ul">
+                        <% unless @business.addresses.each %>
+                        <li><h6>Address</h6></li>
+                        <% @business.address do |address| %>
+                        <li><p><%= address.name %></p></li>
+                        <% end %>
+                        <% end %>
+                    </ul>
+                    <ul class="single-details-ul">
+                        <% unless @business.phones.blank? %>
+                        <li><h6>Contact</h6></li>
+                        <% @business.phones do |phone| %>
+                        <li><p><%= phone.type %></p> <p><%= phone.number_phone %></p></li>
+                        <% end %>
+                        <% end %>
+                    </ul>
+                    <a href="" class="pull-right strong"><i class="fa fa-picture-o vert-offset-right-1" aria-hidden="true"></i>Watch gallery</a>
                 </div>
-            </div>
-        </div>
-        <div class="single-page-bg-color">
-            <div class="single-details">
-                <div class="container">
-                    <div class="row">
-                        
-                        <div class="col-xs-12">
-                            <ul class="single-details-ul">
-                                <% unless @business.addresses.each %>
-                                    <li><h6>Address</h6></li>
-                                    <% @business.address do |address| %>                               
-                                        <li><p><%= address.name %></p></li>
-                                    <% end %>
-                                <% end %>
-                            </ul>
-                            <ul class="single-details-ul">
-                                <% unless @business.phones.blank? %>
-                                    <li><h6>Contact</h6></li>
-                                    <% @business.phones do |phone| %>
-                                        <li><p><%= phone.type %></p> <p><%= phone.number_phone %></p></li>
-                                    <% end %>
-                                <% end %>
-                            </ul>
-                            <a href="" class="pull-right strong"><i class="fa fa-picture-o vert-offset-right-1" aria-hidden="true"></i>Watch gallery</a>
-                        </div>
-                        <div class="col-xs-12">
-                            <a href="#" class="strong"><span class="q-mark">?</span> Be the first to review!</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="details vert-offset-top-4">
-                <div class="container">
-                    <div class="row">
-                        
-                        <div class="col-xs-12">
-                            <div class="details-item vert-offset-bottom-6">
-                                <div class="padding-15 border-bottom details-title">
-                                    <h5 class="strong lineheight-1">Details</h5>
-                                    <div class="dropdown">
-                                        <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag 'setting-bullets.png' %>
-                                        </a>
-                                        <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                            <li><a href="#">Settings</a></li>
-                                            <li><a href="#">Change</a></li>
-                                            <li><a href="#">Mix</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="detail-slider">
-                                    <div class="sl1">
-                                        <div class="padding-20 details-tabs">
-                                            <ul class="nav nav-tabs detail-tabs-ul" role="tablist">
-                                                <li role="presentation"><a href="#details" aria-controls="home" role="tab" data-toggle="tab" class="h6 strong">Business Details</a></li>
-                                                <li role="presentation"  class="active"><a href="#gallery" aria-controls="profile" role="tab" data-toggle="tab" class="h6 strong">Gallery</a></li>
-                                                <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab" class="h6 strong">Video</a></li>
-                                                <li role="presentation"><a href="#reviews" aria-controls="messages" role="tab" data-toggle="tab" class="h6 strong">Reviews</a></li>
-                                            </ul>
-                                            <div class="tab-content">
-
-
-                                                <div role="tabpanel" class="tab-pane" id="details">
-                                                    <%= render "details" %> 
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane active" id="gallery">
-                                                    <%= render "gallery" %>
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane" id="video">
-                                                    <%= render "videos" %>
-                                                </div>
-                                                <div role="tabpanel" class="tab-pane" id="reviews"> 
-                                                    <%= render "reviews" %>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                            </div>
-                            
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="single-comment">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <ul class="list-inline filter-ul" >
-                            <% @business.categories.each do |category| %>
-                                <li><span class="label filter-labels label-green"><%= category.name %></span></li>
-                         <!--   <li><span class="label filter-labels label-emerald">Art</span></li>
-                                <li><span class="label filter-labels label-purple">Birds</span></li> -->
-                            <% end %>
-                        </ul>
-                    </div>
-                    <div class="col-xs-7 vert-offset-top-5">
-                        <h6 class="strong">32 comments<span class="bs-caret"><span class="caret"></span></span></h6>
-                        <div class="media">
-                            <div class="media-left">
-                                <a href="#">
-                                    <img class="media-object" src="http://lorempixel.com/46/46/abstract/7" alt="...">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <h6 class="strong media-heading">Yuliya Petrova</h6>
-                                <h6 class="strong">Play the hits! Some of our favorite editorial features of the last few years with Miguel, Kindness, Toro y Moi, Future Islands, Lee Fields.</h6>
-                            </div>
-                        </div>
-                        <div class="input-group input-group-lg vert-offset-top-3">
-                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                            <input type="text" class="form-control" placeholder="Write a comment " aria-describedby="sizing-addon1">
-                        </div>
-                        <div class="users vert-offset-top-4 vert-offset-bottom-8">
-                            <a href=""><img src="http://placehold.it/30x30" alt=""></a>
-                            <a href=""><img src="http://placehold.it/30x30" alt=""></a>
-                            <a href=""><img src="http://placehold.it/30x30" alt=""></a>
-                            <a href=""><img src="http://placehold.it/30x30" alt=""></a>
-                            <a href=""><img src="http://placehold.it/30x30" alt=""></a>
-                            <a href=""><img src="http://placehold.it/30x30" alt=""></a>
-                            <a href=""><img src="http://placehold.it/30x30" alt=""></a>
-                            <a href=""><img src="http://placehold.it/30x30" alt=""></a>
-                        </div>
-                        <h6 class="strong vert-offset-top-4 user-names">Users: <span><a href="#">Yulia Petrova</a></span>,<span><a href="#"> Alexey Prova </a></span>,<span><a href="#"> Nikita Sova</a></span></h6>
-                    </div>
+                <div class="col-xs-12">
+                    <a href="#" class="strong"><span class="q-mark">?</span> Be the first to review!</a>
                 </div>
             </div>
         </div>
     </div>
-    
-   
+    <div class="details vert-offset-top-4">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-xs-12">
+                    <div class="details-item vert-offset-bottom-6">
+                        <div class="padding-15 border-bottom details-title">
+                            <h5 class="strong lineheight-1">Details</h5>
+                            <div class="dropdown">
+                                <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag 'setting-bullets.png' %>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                    <li><a href="#">Settings</a></li>
+                                    <li><a href="#">Change</a></li>
+                                    <li><a href="#">Mix</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="detail-slider">
+                            <div class="sl1">
+                                <div class="padding-20 details-tabs">
+                                    <ul class="nav nav-tabs detail-tabs-ul" role="tablist">
+                                        <li role="presentation"><a href="#details" aria-controls="home" role="tab" data-toggle="tab" class="h6 strong">Business Details</a></li>
+                                        <li role="presentation"  class="active"><a href="#gallery" aria-controls="profile" role="tab" data-toggle="tab" class="h6 strong">Gallery</a></li>
+                                        <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab" class="h6 strong">Video</a></li>
+                                        <li role="presentation"><a href="#reviews" aria-controls="messages" role="tab" data-toggle="tab" class="h6 strong">Reviews</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane" id="details">
+                                            <%= render "details" %>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane active" id="gallery">
+                                            <%= render "gallery" %>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="video">
+                                            <%= render "videos" %>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="reviews">
+                                            <%= render "reviews" %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="single-comment">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="list-inline filter-ul" >
+                        <% @business.categories.each do |category| %>
+                        <li><span class="label filter-labels label-green"><%= category.name %></span></li>
+                        <!--   <li><span class="label filter-labels label-emerald">Art</span></li>
+                        <li><span class="label filter-labels label-purple">Birds</span></li> -->
+                        <% end %>
+                    </ul>
+                </div>
+                <div class="col-xs-7 vert-offset-top-5">
+                    <h6 class="strong">Comments<span class="bs-caret"><span class="caret"></span></span></h6>
+                    <div id='com'>
+                        <%= render @business.comments %>
+                    </div>
+                    <% if current_user %>
+                    <div class="input-group input-group-lg vert-offset-top-3">
+                        <%= form_for Comment.new, id: "asd" do |f| %>
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        <%= f.text_field :content, class: "form-control", type: 'text', placeholder: "Write a comment", :"aria-describedby" => "sizing-addon1", id: "comment_field"%>
+                        <% end %>
+                    </div>
+                    <% end %>
+                    <div class="users vert-offset-top-4 vert-offset-bottom-8">
+                        <a href=""><img src="http://placehold.it/30x30" alt=""></a>
+                        <a href=""><img src="http://placehold.it/30x30" alt=""></a>
+                        <a href=""><img src="http://placehold.it/30x30" alt=""></a>
+                        <a href=""><img src="http://placehold.it/30x30" alt=""></a>
+                        <a href=""><img src="http://placehold.it/30x30" alt=""></a>
+                        <a href=""><img src="http://placehold.it/30x30" alt=""></a>
+                        <a href=""><img src="http://placehold.it/30x30" alt=""></a>
+                        <a href=""><img src="http://placehold.it/30x30" alt=""></a>
+                    </div>
+                    <h6 class="strong vert-offset-top-4 user-names">Users: <span><a href="#">Yulia Petrova</a></span>,<span><a href="#"> Alexey Prova </a></span>,<span><a href="#"> Nikita Sova</a></span></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div id = "business_id" style = "display: none;"> <%= @business.id %></div>

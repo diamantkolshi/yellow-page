@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  has_many :comments
+
   acts_as_commontator
 
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
