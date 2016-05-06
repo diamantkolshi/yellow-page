@@ -42,8 +42,8 @@
                             <li><span class="label label-default"><%= business.email %></span></li>
                           </ul>
                           <ul class="list-inline likes-ul pull-right">
-                            <li><i class="fa fa-star" aria-hidden="true"></i><%= business.average_rate %></li>
-                            <li><i class="fa fa-comment-o" aria-hidden="true"></i><%= Commontator::Thread.where(commontable_id: business.id).count %></li>
+                              <li><i class="fa fa-star-o" aria-hidden="true"></i><%= business.average_rate %></li>
+                              <li><i class="fa fa-comment-o" aria-hidden="true"></i><%= business.comments.size %></li>
                           </ul>
                         </div>
                       </div>

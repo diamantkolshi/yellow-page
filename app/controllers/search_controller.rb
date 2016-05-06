@@ -31,7 +31,7 @@ class SearchController < ApplicationController
       city_id: city
     }).results    
     
-    asda
+
     redirect_to action: 'index', businesses: @businesses, open: @open, rate: @rate
   end
 end
