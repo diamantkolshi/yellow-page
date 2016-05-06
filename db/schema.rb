@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425183321) do
+ActiveRecord::Schema.define(version: 20160505162711) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "city_id"
@@ -97,6 +97,17 @@ ActiveRecord::Schema.define(version: 20160425183321) do
   end
 
   add_index "cities", ["country_id"], name: "index_cities_on_country_id"
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "business_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "comments", ["business_id"], name: "index_comments_on_business_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "commontator_comments", force: :cascade do |t|
     t.string   "creator_type"

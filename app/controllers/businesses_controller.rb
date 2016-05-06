@@ -14,7 +14,7 @@ class BusinessesController < ApplicationController
   	@business_products = BusinessProduct.all
     
     # @business_rate = Rate.where(rateable_id: @business.id)
-    @rating = Rating.where(business_id: Business.find_by(slug: params[:id]).id).order(created_at: :desc)
+    @rating = Rating.where(business_id: Business.find_by(slug: params[:id]).id).order(created_at: :asc)
 
     @average = business_rate(@rating)
   end

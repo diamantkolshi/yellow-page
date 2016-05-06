@@ -8,7 +8,8 @@ def self.added_average(business_id)
 
  	num = 0 
  	sum = 0
- 	business = Business.find(business_id)
+
+ 	business = Business.find(business_id) 
  	business_rate = self.where(business_id: business_id)
 
 

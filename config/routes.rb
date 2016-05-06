@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'search/index'
 
   resources :rating, only: [:index,:create,:update]
+  get 'rating/create_rate', as: :businesses_create_rate
 
   get 'upload_photos/index'
 
@@ -18,6 +19,8 @@ Rails.application.routes.draw do
   get 'search/filter'
 
   resources :businesses, only: [:index, :show]
+  resources :comments, only: [:create]
+
   resources :suggest_businesses, only: [:new, :create]
   resources :profiles, only: [:index, :update]
   resources :suggest_edits, only: [:index]

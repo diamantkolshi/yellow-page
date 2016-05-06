@@ -1,0 +1,27 @@
+     <% @ratings.each do |rate| %>
+            <div class="media">
+                    <a class="pull-left" href="#">
+                        <% if User.find(rate.user_id).logo.blank? %>
+                            <%= image_tag "noprofile1.png", width: "64", height: "64", :class => "media-object"%>
+                        <% else %>
+                            <%= image_tag User.find(rate.user_id).logo_url, width: "64", height: "64", :class => "media-object"%>                        
+                        <% end %>
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading"><%= link_to User.find(rate.user_id).email, profiles_path(rate.user_id) %>
+                            <small><%= rate.created_at %></small>
+                        </h4>
+                        <div id="rateYo<%= rate.id %>"></div>
+                    </div>
+              </div>
+                <script type="text/javascript">
+                    $(function () {
+                     
+                      $("#rateYo<%= rate.id %>").rateYo({
+                        rating: <%= rate.score %>,
+                        readOnly: true
+                      });
+
+                    });
+                </script>
+   <% end %>
