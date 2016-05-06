@@ -60,7 +60,9 @@
     </div>
 
     <div id = "business_id" style = "display: none;"> <%= @business.id %> </div>
+    <% if current_user %>
 <% rating = Rating.find_by(user_id: current_user.id, business_id: @business.id) %>
+    <% end %>
 <% if  rating %>
     <script>
    $(function () {
