@@ -24,28 +24,54 @@
         <div class="container">
             <div class="row">
                 
-                <div class="col-xs-12">
+                <div class="col-xs-3">
                     <ul class="single-details-ul">
-                        <% unless @business.addresses.each %>
+                        <% unless @business.addresses.blank? %>
                         <li><h6>Address</h6></li>
-                        <% @business.address do |address| %>
-                        <li><p><%= address.name %></p></li>
+                            <% @business.addresses.each do |address| %>
+                            <li><p><i class="fa fa-map-marker" aria-hidden="true"></i> <%= address.name %></p></li>
+                            <% end %>
                         <% end %>
-                        <% end %>
-                    </ul>
+                    </ul><br>
+                    <a href="#" class="strong"><span class="q-mark">?</span><% if @business.addresses.first.present? %>
+                    <a href = "https://maps.google.com/maps?saddr=&daddr=<%= @business.addresses.first.latitude %>, <%= @business.addresses.first.longitude %>&dirflg=d" > Directions</a><br>
+                <% end %></a>
+                </div>
+                  <div class="col-xs-3">
                     <ul class="single-details-ul">
                         <% unless @business.phones.blank? %>
                         <li><h6>Contact</h6></li>
-                        <% @business.phones do |phone| %>
-                        <li><p><%= phone.type %></p> <p><%= phone.number_phone %></p></li>
+                            <% @business.phones.each do |phone| %>
+                            <li><p><i class="fa fa-phone" aria-hidden="true"></i> <%= phone.phone_type %>: <%= phone.phone_number %></p></li>
+                            <% end %>
                         <% end %>
-                        <% end %>
+                    </ul>               
+                </div>
+                <div class="col-xs-3">
+                    <ul class="single-details-ul">            
+                        <li><h6>Email</h6></li>  
+                        <li><p><i class="fa fa-phone" aria-hidden="true"></i> <%= @business.email %></p></li>
+                        <li>
+                            <% unless @business.facebook.blank? %>
+                                <a href="<%= @business.facebook %>"><i class="fa fa-facebook-official fa-3x"></i></a>
+                            <% end %>
+                            <% unless @business.instagram.blank? %>
+                                <a href="<%= @business.instagram %>"><i class="fa fa-instagram fa-3x"></i></a>
+                            <% end %>
+                            <% unless @business.twitter.blank? %>
+                                <a href="<%= @business.twitter %>"><i class="fa fa-twitter-square fa-3x"></i></a>
+                            <% end %>
+                            <% unless @business.google.blank? %>
+                                <a href="<%= @business.google %>"><i class="fa fa-google-plus-square fa-3x"></i></a>
+                            <% end %>
+                        </li>
                     </ul>
-                    <a href="" class="pull-right strong"><i class="fa fa-picture-o vert-offset-right-1" aria-hidden="true"></i>Watch gallery</a>
+                      
+
                 </div>
-                <div class="col-xs-12">
-                    <a href="#" class="strong"><span class="q-mark">?</span> Be the first to review!</a>
-                </div>
+
+                    <a href="<%= suggest_edits_path(id: @business.id) %>" class="pull-right strong"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Suggest and edit</a>
+
             </div>
         </div>
     </div>
@@ -94,9 +120,11 @@
                             </div>
                             
                         </div>
+
                         
                     </div>
                 </div>
+                <%= render "info" %>
                 
             </div>
         </div>

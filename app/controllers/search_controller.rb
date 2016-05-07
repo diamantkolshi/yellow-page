@@ -16,6 +16,7 @@ class SearchController < ApplicationController
     if params[:businesses].present?
       @businesses = Business.where(slug: params[:businesses])
       @open = params[:open]
+ 
     end
         
   end
@@ -32,7 +33,7 @@ class SearchController < ApplicationController
     }).results    
     
 
-    redirect_to action: 'index', businesses: @businesses, open: @open, rate: @rate
+    redirect_to action: 'index', businesses: @businesses, open: @open
   end
 end
 

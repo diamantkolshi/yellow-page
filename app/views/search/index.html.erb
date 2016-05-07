@@ -121,12 +121,13 @@
 
 				<% unless @businesses.blank? %>
 				 <% @businesses.each do |business| %>
+				    <% next if @open && business.open != true %>
 					<div class="col-xs-6">
 						<div class="thumbnail">
 					    <% if business.logo.blank? %>
-								<%= image_tag "nologo.png", width: "80%", height: "90px"%>
+								<%= image_tag "nologo.png", height: "90px"%>
 							<% else %>
-								<%= image_tag business.logo_url, width: "80%", height: "90px"%>
+								<%= image_tag business.logo_url, height: "90px"%>
 							<% end %>
 					    <div class="caption">
 					      <h4><%= link_to business.name, business_path(business) %></h4>
@@ -137,7 +138,7 @@
 					      </ul>
 					      <ul class="list-inline likes-ul pull-right">
 					      	<li><i class="fa fa-star" aria-hidden="true"></i><%= business.average_rate %></li>
-					      	<li><i class="fa fa-comment-o" aria-hidden="true"></i><%= Commontator::Thread.where(commontable_id: business.id).count %></li>
+					      	<li><i class="fa fa-comment-o" aria-hidden="true"></i><%= business.comments.size %></li>
 					      </ul>
 					    </div>
 					  </div>
@@ -178,23 +179,7 @@
 </section>
 
 	
-	<script src="https://code.jquery.com/jquery-1.12.0.min.js" type="text/javascript"></script>
-	<script src="http://malsup.github.io/jquery.cycle.all.js" type="text/javascript"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script>
-	<script   src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"   integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw="   crossorigin="anonymous"></script>
-	 <script>
-		  $(function() {
-		    $( "#accordion" ).accordion({
-		    	 heightStyle: "content"
-		    });
-		  });
-  </script>
-  <script>
-  /*$(function() {
-    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-  });*/
-  </script>
+
 
 	<!-- toolkit scripts -->
 

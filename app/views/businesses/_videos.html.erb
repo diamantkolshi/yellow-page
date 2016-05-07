@@ -5,9 +5,13 @@
         <div class="row">
             <% unless @business.videos.blank? %>
             <!-- <div class="col-md-2"></div>  -->
-            <div class="col-md-4">
+            <div class="col-md-12">
                 <% @business.videos.each do |video| %>
-                <iframe width="360" height="215" src="<%= video.source %>" frameborder="0" allowfullscreen></iframe>
+                 <div class="col-xs-4">
+                    <ul class="single-details-ul">
+                        <iframe width="300" height="200" src="<%= video.source %>" frameborder="0" allowfullscreen></iframe>
+                    </ul>
+                </div>
                 <% end %>
             </div>
             <% else %>

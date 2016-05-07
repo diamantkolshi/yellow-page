@@ -7,12 +7,12 @@
             <div id="links" class="text-center" >
             <% unless @business.photos.blank? && @suggest_photos.blank? %>
                 <% @business.photos.each do |photo| %>
-                <a href="<%= image_path photo.source_url %>" title="Banana" data-gallery>
+                <a href="<%= image_path photo.source_url %>" title="<%= photo.name %>" data-gallery>
                     <%= image_tag photo.source_url, class: "image_gallery"%>
                 </a>
                 <% end %>
                 <% @suggest_photos.each do |suggest_photo| %>
-                <a href="<%= image_path suggest_photo.source_url %>" title="Banana" data-gallery>
+                <a href="<%= image_path suggest_photo.source_url %>" title="<%= photo.name %>" data-gallery>
                     <%= image_tag suggest_photo.source_url, class: "image_gallery"%>
                 </a>
                 <% end %>            
