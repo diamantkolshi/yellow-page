@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   get 'upload_photos/index'
 
-  mount Commontator::Engine => '/commontator'
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   # mount RailsAdmin::Engine => 'admin/suggest_business/:id/edit', :as => :suggest_business 
   

@@ -19,7 +19,11 @@
 	<div class="container">
 		<div class="row">
 			
-			<div class="col-md-2">
+		<div class="col-md-6">
+			<ul class="list-inline filter-ul" >
+	        	<li><span class="label filter-labels">White <i class="fa fa-times" aria-hidden="true"></i></span></li>
+	        </ul>
+
 			</div>
 			<div class="col-md-6 text-right">
 				<span class="h6 strong">Sort By</span>
@@ -46,17 +50,8 @@
 
 <section class="filter">
 	<div class="container">
-			<div class="row">
-				<div class="col-xs-6 center-block text-center view-title">
-					<h3>You Might Like</h3>
-					<h5 class="vert-offset-top-1">Your neighbourhood search engine YP.ca helps you easily access local listings for 1.5 million businesses across Canada.</h5>
-				</div>
-			</div>
 
-
-
-
-    <%= form_tag("/search/filter", method: "get") do %>
+    <%= form_tag("/search/filter", method: "get", businesses: @businesses) do %>
 			<div class="row vert-offset-top-6">
 				<div class="col-xs-4">
 					<div class="filter-aside">
@@ -68,17 +63,19 @@
 						<div class="padding-20 border-bottom">
 							<h6 class="strong">Category</h6>
 							<ul class="list-inline brand-ul">
-	              <% @categories= Category.all.map(&:name) %>
-								<%= select_tag :category, options_for_select(@categories), class: "form-control" %>
+	              				<% @categories= Category.all.map(&:name) %>
+								<%= select_tag :category, options_for_select(@categories), include_blank: "Select Category",class: "form-control" %>
 							</ul>
 							<h6 class="strong">City</h6>
 							<ul class="list-inline brand-ul">
-	              <% @cities = City.all %>
-								<%= select_tag :city,  options_from_collection_for_select(@cities, "id", "name"), class: "form-control" %>
+	              				<% @cities = City.all %>
+								<%= select_tag :city,  options_from_collection_for_select(@cities, "id", "name"), include_blank: "Select city", require: true, class: "form-control" %>
+							
 							</ul>
 							<ul class="list-inline brand-ul">
-              	<%= check_box_tag(:open, class: "form-control") %>
-								<%= label_tag(:open, "Open") %>
+              					<%= check_box_tag(:open, class: "form-control") %>
+								<%= label_tag(:open, "Open") %>								
+								<%= hidden_field_tag :businesses, @businesses.map(&:id) %>
 							</ul>		
 						</div>
 						<div class="padding-20 border-bottom">

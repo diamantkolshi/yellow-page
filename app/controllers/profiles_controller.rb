@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
   # before_action :user_is_admin?
   
   def index
-    @user_creator =  Commontator::Comment.where(creator_id: current_user.id).paginate(:page => params[:page], :per_page => 5) 
+    @user_creator =  Comment.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 5) 
     @user_ratings = Rating.where(user_id: current_user.id).paginate(:page => params[:page], :per_page => 5) 
   end
 

@@ -31,12 +31,12 @@
                         <div class="panel panel-default alert alert-warning alert-dismissible">
                           <div class="panel-body">
                                 <% @user_creator.each do |comment| %>
-                                <h3 style="color:#3366ff"><%= link_to Business.find(comment.thread.commontable_id).name, business_path(comment.thread.commontable_id) %></h3>
-                                <h5><% Business.find(comment.thread.commontable_id).addresses.each do |address|%></h5>
+                                <h3 style="color:#3366ff"><%= link_to Business.find(comment.business_id).name, business_path(comment.business_id) %></h3>
+                                <h5><% Business.find(comment.business_id).addresses.each do |address|%></h5>
                                    <i class="fa fa-map-marker" aria-hidden="true"></i> <%= address.name %><br>
                                 <% end %></h5><br>
                                 <p><i class="fa fa-comments-o" aria-hidden="true"></i>
-                                     <%= comment.body %></p>
+                                     <%= comment.content %></p>
                                 <hr>
                                 <% end %>
                           </div>

@@ -28,6 +28,7 @@ class SearchController < ApplicationController
   end
 
   def filter 
+
     category_name = params[:category]
     city = params[:city].to_i
     open = true if params[:open].present?
@@ -35,7 +36,6 @@ class SearchController < ApplicationController
     rate_max = params[:rate_max].first.to_i
 
     
-
     businesses = Business.search(where:{
       category_name: category_name,
       city_id: city

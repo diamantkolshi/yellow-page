@@ -83,9 +83,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
-    commontator (4.11.1)
-      jquery-rails
-      rails (>= 3.1)
     concurrent-ruby (1.0.1)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
@@ -364,7 +361,6 @@ DEPENDENCIES
   capybara
   carrierwave
   coffee-rails (~> 4.1.0)
-  commontator (~> 4.11.1)
   database_cleaner
   delayed_job_active_record
   devise
@@ -416,5 +412,8 @@ DEPENDENCIES
   webmock
   will_paginate (~> 3.0.5)
 
+RUBY VERSION
+   ruby 2.3.0p0
+
 BUNDLED WITH
-   1.11.2
+   1.12.2

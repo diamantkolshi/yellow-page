@@ -1,7 +1,12 @@
 <div class="media">
 	<div class="media-left">
 		<a href="#">
-			<img class="media-object" src="http://lorempixel.com/46/46/abstract/7" alt="...">
+		    <% if comment.user.logo.blank? %>
+				<%= image_tag "noprofile1.png", width: "50px", class: "media-object" %>
+            <% else %>
+                <%= image_tag comment.user.logo_url, width: "50px", class: "media-object" %>
+            <% end %>
+			<!-- <img class="media-object" src="http://lorempixel.com/46/46/abstract/7" alt="..."> -->
 		</a>
 	</div>
 	<div class="media-body">
