@@ -1,5 +1,5 @@
 
-<br><br><br>
+
     <!-- Page Content -->
     <div class="container">
 
@@ -8,9 +8,9 @@
             <div class="col-lg-12">        
                     <small>...</small>       
                 <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
+                    <li><a href="index.html">Search</a>
                     </li>
-                    <li class="active">Advanced</li>
+                    <li class="active">By Products</li>
                 </ol>
             </div>
         </div>
@@ -66,14 +66,21 @@
                                  </div>
                             </div>
                             <% end %>
-                        </div>
+                         </div>
                     </div>
-                </div>                            
-            </div>
+                </div>
+
+
+                <script type="text/javascript">
+
+                </script>
+                            
+                </div>
         </div>
         <!-- /.row -->
 
         <hr>
+
 
     </div>
     <!-- /.container -->
@@ -84,10 +91,10 @@
  <script type="text/javascript">
    $(function() {
      $( "#business_search" ).autocomplete({
-    <% ac_businesses = Business.all %>
+    <% products = Product.all %>
      source: [
-      <%ac_businesses.each do |b| %>
-     { label: "<%=  b.name %>", value: "<%=b.name %>" },
+      <%products.each do |p| %>
+     { label: "<%=  p.name %>", value: "<%= p.name %>" },
      <% end %>
      ]
      });
