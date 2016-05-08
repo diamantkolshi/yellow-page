@@ -35,11 +35,33 @@
           
           <div class="col-md-12">
             <ul class="list-inline section-tabs-ul">
-              <li><span class="tabs-icon icon-hanger"></span><h6 class="strong inline-block">Clothing</h6></li>
-              <li><span class="tabs-icon icon-glasses"></span><h6 class="strong inline-block">Shoes & Boots</h6></li>
-              <li><span class="tabs-icon icon-bags"></span><h6 class="strong inline-block">Bags & Wallets</h6></li>
-              <li><span class="tabs-icon icon-clock"></span><h6 class="strong inline-block">Electronics</h6></li>
-              <li><span class="tabs-icon icon-glasses"></span><h6 class="strong inline-block">Accessories</h6></li>
+               <% @categories.each do |c|%>
+                 <% if c.name == "Restaurants" %>
+                <li>
+                  <span class="tabs-icon icon-hanger"></span>
+                   <%= link_to search_aggregations_path(name: c.name) do  %>
+                  <h6 class="strong inline-block"><%= c.name %></h6><% end%>
+                </li>
+                  <% elsif  c.name == "Pizza"%>
+                  <li>
+                  <span class="tabs-icon icon-hanger"></span>
+                   <%= link_to search_aggregations_path(name: c.name) do  %>
+                  <h6 class="strong inline-block"><%= c.name %></h6><% end%>
+                </li>
+                  <% elsif  c.name == "Automobile"%>
+                  <li>
+                  <span class="tabs-icon icon-hanger"></span>
+                   <%= link_to search_aggregations_path(name: c.name) do  %>
+                  <h6 class="strong inline-block"><%= c.name %></h6><% end%>
+                </li>
+                  <% elsif  c.name == "Fast Food"%>
+                  <li>
+                  <span class="tabs-icon icon-hanger"></span>
+                   <%= link_to search_aggregations_path(name: c.name) do  %>
+                  <h6 class="strong inline-block"><%= c.name %></h6><% end%>
+                </li>
+                <% end %>
+              <% end %>
             </ul>
           </div>
         </div>

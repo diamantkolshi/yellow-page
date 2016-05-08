@@ -28,7 +28,6 @@ class SearchController < ApplicationController
   end
 
   def filter 
-    asd
     category_name = params[:category]
     city = params[:city].to_i
     open = true if params[:open].present?
@@ -45,6 +44,12 @@ class SearchController < ApplicationController
 
     redirect_to action: 'index', businesses: businesses, open: open, rate_min: rate_min, rate_max: rate_max 
   end
+
+  def aggregations
+    @businesses = Business.search( where: {
+      category_name: params[:name]
+      })
+  end 
 end
 
 
