@@ -1,5 +1,5 @@
 class SuggestBusinessesController < ApplicationController
-      layout 'login-register', :only => [:new]
+
 
 	  def new
       	@suggest_business = SuggestBusiness.new

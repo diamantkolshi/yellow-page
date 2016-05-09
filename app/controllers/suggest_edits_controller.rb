@@ -5,7 +5,7 @@ class SuggestEditsController < ApplicationController
 
 
   def index
-    @business_suggest_edit = Business.find(params[:id])
+    @business_suggest_edit = Business.friendly.find(params[:id])
     @edit = SuggestEdit.new
   end
 

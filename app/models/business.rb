@@ -8,7 +8,6 @@ class Business < ActiveRecord::Base
 
   paginates_per 4
  
-  acts_as_commontable
  
   has_many :business_addresses
   has_many :business_categories
@@ -26,10 +25,11 @@ class Business < ActiveRecord::Base
 
   after_create  :create_dir
   after_destroy :destroy_dir
-  # after_save :reindex_business
+  after_save :reindex_business
 
 
   def reindex_business
+     self.slug = self.name
      Business.reindex
   end
 

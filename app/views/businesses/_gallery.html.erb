@@ -12,7 +12,7 @@
                 </a>
                 <% end %>
                 <% @suggest_photos.each do |suggest_photo| %>
-                <a href="<%= image_path suggest_photo.source_url %>" title="<%= photo.name %>" data-gallery>
+                <a href="<%= image_path suggest_photo.source_url %>" title="suggested" data-gallery>
                     <%= image_tag suggest_photo.source_url, class: "image_gallery"%>
                 </a>
                 <% end %>            

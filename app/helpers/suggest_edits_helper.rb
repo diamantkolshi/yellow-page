@@ -47,7 +47,7 @@ module SuggestEditsHelper
     else
       SendMailer.suggest_and_edit(@update_attribute,@business_params,current_user).deliver_now
       flash[:success] = "Thank you for your contribution! Our moderators are currently reviewing your suggestions. Your requested changes should be live shortly."
-      redirect_to business_path(@business_params.id)
+      redirect_to business_path(@business_params)
     end
   end
 

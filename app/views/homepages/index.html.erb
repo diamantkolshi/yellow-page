@@ -35,32 +35,13 @@
           
           <div class="col-md-12">
             <ul class="list-inline section-tabs-ul">
-               <% @categories.each do |c|%>
-                 <% if c.name == "Restaurants" %>
+               <% @categories.each do |c|%>                 
                 <li>
-                  <span class="tabs-icon icon-hanger"></span>
-                   <%= link_to search_aggregations_path(name: c.name) do  %>
-                  <h6 class="strong inline-block"><%= c.name %></h6><% end%>
+                  <i class="fa fa-gamepad" aria-hidden="true"></i>
+                   <%= link_to businesses_aggregations_path(name: c.name) do  %>
+                  <h6 class="strong inline-block"><%= c.name %></h6>
+                  <% end%>
                 </li>
-                  <% elsif  c.name == "Pizza"%>
-                  <li>
-                  <span class="tabs-icon icon-hanger"></span>
-                   <%= link_to search_aggregations_path(name: c.name) do  %>
-                  <h6 class="strong inline-block"><%= c.name %></h6><% end%>
-                </li>
-                  <% elsif  c.name == "Automobile"%>
-                  <li>
-                  <span class="tabs-icon icon-hanger"></span>
-                   <%= link_to search_aggregations_path(name: c.name) do  %>
-                  <h6 class="strong inline-block"><%= c.name %></h6><% end%>
-                </li>
-                  <% elsif  c.name == "Fast Food"%>
-                  <li>
-                  <span class="tabs-icon icon-hanger"></span>
-                   <%= link_to search_aggregations_path(name: c.name) do  %>
-                  <h6 class="strong inline-block"><%= c.name %></h6><% end%>
-                </li>
-                <% end %>
               <% end %>
             </ul>
           </div>

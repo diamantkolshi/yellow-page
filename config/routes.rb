@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'search/advanced'
   get 'search/by_product'
   get 'search/filter'
-  get 'search/aggregations'
+  get 'businesses/aggregations'
 
   resources :businesses, only: [:index, :show]
   resources :comments, only: [:create]

@@ -14,10 +14,7 @@
         <h3><%= @business.name %></h3>
         <div id="rateAverage"></div><br>
 
-        <h5><%= @business.description %></h5>
-        <p><i class="fa fa-envelope-o"></i>
-            : <a href="<%= @business.email %>"><%= @business.email %></a>
-        </p>
+        <h5><%= @business.description %></h5><br>
         <p><i class="fa fa-clock-o"></i>
         <abbr title="Hours"> Today</abbr>:
         <% if @business.open == [] %>
@@ -31,25 +28,6 @@
      <!--    <p><i class="fa fa-clock-o"></i>
         <abbr title="Hours">Tomorrow</abbr>: 10:00 - 22:00
         </p> -->
-
-       
-        <ul class="list-unstyled list-inline list-social-icons">
-            <% unless @business.facebook.blank? %>
-                <li>
-                    <a href="<%= @business.facebook %>"><i class="fa fa-facebook-square fa-2x"></i></a>
-                </li>
-            <% end %>
-            <% unless @business.instagram.blank? %>
-                <li>
-                    <a href="<%= @business.instagram %>"><i class="fa fa-linkedin-square fa-2x"></i></a>
-                </li>
-            <% end %>
-            <% unless @business.twitter.blank? %>
-                <li>
-                    <a href="<%= @business.twitter %>"><i class="fa fa-twitter-square fa-2x"></i></a>
-                </li>
-            <% end %>
-        </ul>
     </div>
 </div>
 <!-- /.row -->

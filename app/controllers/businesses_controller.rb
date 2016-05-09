@@ -1,21 +1,23 @@
 class BusinessesController < ApplicationController
 
-  def index  	
-  	@businesses = Business.all.paginate(:page => params[:page], :per_page => 9)
+  def index 
+    if params[:businesses].present? 	
+  	   @businesses = Business.where(slug: params[:businesses]).paginate(:page => params[:page], :per_page => 9)
+    else
+       @businesses = Business.all.paginate(:page => params[:page], :per_page => 9)
+    end
   end
 
   def show 
   	@business = Business.friendly.find(params[:id])
     @business_addresses = Business.find(@business.id).addresses
-    @suggest_photos = SuggestPhoto.where(business_id: params[:id], confirm: true)
-  	commontator_thread_show(@business)
+    @suggest_photos = SuggestPhoto.where(business_id: @business.id, confirm: true)
   	@types = Type.all
   	@products = @business.products.all
   	@business_products = BusinessProduct.all
-    
-    # @business_rate = Rate.where(rateable_id: @business.id)
-    @rating = Rating.where(business_id: Business.find_by(slug: params[:id]).id).order(created_at: :asc)
 
+    @rating = Rating.where(business_id: @business.id).order(created_at: :asc)
+    
     @average = business_rate(@rating)
   end
 
@@ -34,6 +36,18 @@ class BusinessesController < ApplicationController
       0
     end
   end
+
+  def aggregations
+    @businesses = Business.search( where: {
+      category_name: params[:name]
+      }).results
+
+    if @businesses.empty?
+      @businesses = []
+    end
+
+    redirect_to action: "index", businesses: @businesses
+  end 
 end
 
 

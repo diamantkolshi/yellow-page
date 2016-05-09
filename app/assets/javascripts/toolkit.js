@@ -76,7 +76,7 @@
 		}
 
 		$fromAmount.val(0);
-		$toAmount.val(2);
+		$toAmount.val(4);
 		updateAmountRange();
 
 		var sliderOptions = {

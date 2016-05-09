@@ -9,7 +9,7 @@
                     <small>...</small>
     
                 <ol class="breadcrumb">
-                    <li><a href="index.html">Search</a>
+                    <li><a href="<%= root_path %>">home</a>
                     </li>
                     <li class="active">Advanced</li>
                 </ol>
@@ -49,7 +49,7 @@
                                     <div class="col-xs-12">
                                         <label for="InputEmail">What?</label>
                                         <div class="input-group">
-                                        <%= text_field_tag :multi, params[:multi], :required => true,class: "form-control", id: "business_search", placeholder: "e.g. products name, email , category, post_code" , autocomplete: "off" %>
+                                        <%= text_field_tag :multi, params[:multi], :required => true,class: "form-control", id: "business_search", placeholder: "e.g. Business name, email , category, post_code" , autocomplete: "off" %>
 
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                                     </div>
@@ -72,7 +72,7 @@
 
                                 <label for="InputName">City</label>
                                     <div class="input-group">
-                                        <%= collection_select(:city, :city_id, City.all, :id, :name, {prompt: 'Select a city'}, {:class=>'form-control'}) %>
+                                        <%= collection_select(:city_id, :city_id, City.all, :id, :name, {prompt: 'Select a city'}, {:class=>'form-control'}) %>
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                                     </div>
                                     
@@ -110,3 +110,16 @@
     <!-- /.container -->
 
 
+
+ <script type="text/javascript">
+   $(function() {
+     $( "#address" ).autocomplete({
+    <% address_name = Address.all %>
+     source: [
+      <% address_name.each do |a| %>
+     { label: "<%= a.name %>", value: "<%= a.name %>" },
+     <% end %>
+     ]
+     });
+   });   
+ </script>

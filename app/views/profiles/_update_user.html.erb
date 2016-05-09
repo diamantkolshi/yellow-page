@@ -18,7 +18,9 @@
          <%= f.input_field :email, required: true, autofocus: true, :class => 'form-control no-border' %>
       </div><hr>                                   
       
-      <%= f.button :submit, "Update", class: "form-control btn-default" %>
+      <%# f.button :submit, "Update", class: "btn btn-primary" %>
+      <%= button_tag 'Update', type: :submit, class: 'form-control btn-primary' %>
+
     <%end%>
  
 
