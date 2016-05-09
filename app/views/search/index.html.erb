@@ -134,7 +134,7 @@
 				 <% @businesses.each do |business| %>
 				    <% next if @open && business.open != true %>
 					<div class="col-xs-6">
-						<div class="thumbnail">
+						<div class="thumbnails-height">
 					    <% if business.logo.blank? %>
 								<%= image_tag "nologo.png", height: "90px"%>
 							<% else %>

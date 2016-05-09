@@ -560,9 +560,10 @@ img:hover {
   }
 
 
-
-
-
+.thumbnails-height > img {
+  width: 100%;
+  height: 250px;
+}
 
 
 
