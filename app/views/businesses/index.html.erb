@@ -28,7 +28,7 @@
                 <% unless @businesses.blank? %>
                  <% @businesses.each do |business| %>
                     <div class="col-xs-4">
-                        <div class="thumbnail">
+                        <div class="thumbnails-height">
                         <% if business.logo.blank? %>
                           <%= image_tag "nologo.png",  height: "90px"%>
                         <% else %>

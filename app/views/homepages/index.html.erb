@@ -58,7 +58,7 @@
       <div class="row view-items">
         <% @businesses.each do |business| %>
         <div class="col-xs-4">
-          <div class="thumbnail">
+          <div class="thumbnails-height">
             <% if business.logo.blank? %>
             <%= image_tag "nologo.png"%>
             <% else %>
@@ -85,7 +85,7 @@
     <div class="row view-items ">
     <% @businesses_rate.each do |business_rate| %>
       <div class="col-xs-4">
-        <div class="thumbnail">
+        <div class="thumbnails-height">
           <% if business_rate.logo.blank? %>
           <%= image_tag "nologo.png"%>
           <% else %>

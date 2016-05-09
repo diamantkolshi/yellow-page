@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-xs-6 single-hero-title"><br><br><br><br>
                 <h2><%= @business.name %></h2>
-                <% unless @business.logo %>
-                <%= image_tag "food2.png", width: "40%", class: "img-circle", style: "padding-left: 00px;"%>
+                <% if @business.logo %>
+                <%= image_tag @business.logo_url, width: "40%", class: "img-circle", style: "padding-left: 00px;"%>
                 <% end %>
             </div>
         </div>

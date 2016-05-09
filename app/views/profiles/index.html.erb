@@ -57,7 +57,7 @@
                     <div class="tab-pane fade" id="service-two">
                         <div class="panel panel-default alert alert-warning alert-dismissible">
                           <div class="panel-body">
-                          <% unless @user_ratings %>
+                          <% unless @user_ratings.empty? %>
                             <% @user_ratings.each do |rate| %>
                                 <h3 style="color:#3366ff"><%= link_to Business.find(rate.business_id).name, business_path(Business.find(rate.business_id)) %></h3>
                                 <h5><% Business.find(rate.business_id).addresses.each do |address| %>

@@ -23,13 +23,12 @@ class Business < ActiveRecord::Base
 
   validates :name, presence: true
 
-  after_create  :create_dir
-  after_destroy :destroy_dir
-  after_save :reindex_business
+  # after_create  :create_dir
+  # after_destroy :destroy_dir
+  after_commit :reindex_business
 
 
   def reindex_business
-     self.slug = self.name
      Business.reindex
   end
 
@@ -48,7 +47,7 @@ class Business < ActiveRecord::Base
   end
 
   def destroy_dir
-     FileUtils.remove_dir("#{Rails.public_path}/uploads/#{self.class.to_s.pluralize.downcase}/#{self.id}")     
+     # FileUtils.remove_dir("#{Rails.public_path}/uploads/#{self.class.to_s.pluralize.downcase}/#{self.id}")     
   end
 
   def open
