@@ -66,7 +66,7 @@
             <% end %>
             <div class="caption">
               <h4><%= link_to business.name, business_path(business) %></h4>
-              <h6><%= business.description %></h6>
+              <h6><%= truncate(business.description, length: 100) %></h6>
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@
           <% end %>
           <div class="caption">
             <h4><%= link_to business_rate.name, business_path(business_rate) %></h4>
-            <h6><%= business_rate.description %></h6>
+              <h6><%= truncate(business_rate.description, length: 100) %></h6>
             <div class="vert-offset-top-2"></div>
             <ul class="list-inline likes-ul">
               <li><span class="label label-default"><%=business_rate.email %></span></li>
@@ -106,7 +106,7 @@
         </div>
       </div>
     <% end %>
-      <div class="col-xs-12 text-center vert-offset-top-4"><a href="#" class="btn btn-gray">View All <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
+      <div class="col-xs-12 text-center vert-offset-top-4"><a href="<%= businesses_path %>" class="btn btn-gray">View All <i class="fa fa-angle-right" aria-hidden="true"></i></a></div>
     </div>
   </div>
 </section>

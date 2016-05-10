@@ -24,7 +24,7 @@ class SearchController < ApplicationController
         end
       end
 
-
+      
     end
         
   end
@@ -56,17 +56,16 @@ class SearchController < ApplicationController
     business_filter = business_filter.search(where:{
       city_id: city
     }).results if !category_name.present? && city != 0
+    
+
+    if params[:sort].present? 
+    end 
 
     redirect_to action: 'index', businesses: business_filter.to_a, open: open, rate_min: rate_min, rate_max: rate_max, category: category_name, city: city.to_i 
   end
 
+  
 
-
-  def aggregations
-    @businesses = Business.search( where: {
-      category_name: params[:name]
-      })
-  end 
 end
 
 

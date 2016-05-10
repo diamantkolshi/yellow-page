@@ -36,7 +36,7 @@
                         <% end %>
                         <div class="caption">
                           <h4><%= link_to business.name, business_path(business) %></h4>
-                          <h6><%= business.description %></h6>
+                          <h6><%= truncate(business.description, length: 100) %></h6>
                           <div class="vert-offset-top-2"></div>             
                           <ul class="list-inline likes-ul">
                             <li><span class="label label-default"><%= business.email %></span></li>
