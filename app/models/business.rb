@@ -41,6 +41,12 @@ class Business < ActiveRecord::Base
     ) 
   end
 
+  def slug=(value)
+    if value.present?
+      write_attribute(:slug, value)
+    end
+  end
+  
   def create_dir
      # dir_path = "#{Rails.public_path}/uploads/#{self.class.to_s.pluralize.downcase}/#{self.id}"
      # FileUtils.mkdir_p(dir_path)

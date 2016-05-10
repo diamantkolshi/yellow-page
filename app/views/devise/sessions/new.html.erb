@@ -2,8 +2,12 @@
     <div class="join">Sign In</div>
             <div class="clr"></div>
           <div class="login-options">Choose one of the following sign in methods.</div>
-              <a class="twitter" href="#">Twitter</a>
-              <a class="facebook" href="#">Facebook</a>
+              <%= link_to  user_omniauth_authorize_path(:twitter) do %>
+              <div class="twitter">Twitter</div>
+             <% end %> 
+              <%= link_to  user_omniauth_authorize_path(:facebook) do %>
+               <div class="facebook">Facebook</div>
+              <% end %>
                <%= link_to  user_google_oauth2_omniauth_authorize_path do %>
                   <div class="google">Google+</div>
               <% end %>
