@@ -17,53 +17,78 @@ class SearchController < ApplicationController
       @businesses = []
       businesses_filter = Business.where(slug: params[:businesses])
       @open = params[:open] 
+
+    
       
       businesses_filter.each do |business|
-        if business.average_rate.between?(params[:rate_min].to_i, params[:rate_max].to_i) 
-          @businesses << business 
-        end
+        if @open 
+          if business.average_rate.between?(params[:rate_min].to_i, params[:rate_max].to_i) && business.open == true
+            @businesses << business 
+          end
+        else
+          if business.average_rate.between?(params[:rate_min].to_i, params[:rate_max].to_i) 
+            @businesses << business
+          end
+        end 
       end
-
       
+    end
+
+    if params[:sort].present?
+      
+      if params[:businesses] != nil
+        businesses_select = params[:businesses].split(" ").map {|x| x.to_i }  
+        businesses_sorted = Business.where(id: businesses_select.map {|x| x }) 
+      end
+      
+  
+      if params[:sort] == "Rate"
+        @businesses = businesses_sorted.order(average_rate: :desc)
+      elsif params[:sort] == "Name"
+        @businesses = businesses_sorted.order(name: :asc)   
+      end
+    
     end
         
   end
 
   def filter 
-    
-    if params[:businesses] != nil
-      business_select = params[:businesses].split(" ").map {|x| x.to_i }  
-      business_filter = Business.where(id: business_select.map {|x| x }) 
-    else
-      business_filter = Business.all
-    end
+ 
+    businesses_select = []
 
     category_name = params[:category]
     city = params[:city].to_i
     open = true if params[:open].present?
     rate_min = params[:rate_min].first.to_i
     rate_max = params[:rate_max].first.to_i
+    
+    if params[:businesses] != nil
+      businesses_search = params[:businesses].split(" ").map {|x| x.to_i }  
+      businesses_filter = Business.where(id: businesses_search.map {|x| x }) 
+    end    
 
-    business_filter = business_filter.search(where:{
+    businesses_filter = businesses_filter.search(where:{
       category_name: category_name,
       city_id: city
     }).results if category_name.present? && city != 0  
     
-    business_filter = business_filter.search(where:{
+    businesses_filter = businesses_filter.search(where:{
       category_name: category_name
     }).results if category_name.present? && city == 0
 
-    business_filter = business_filter.search(where:{
+    businesses_filter = businesses_filter.search(where:{
       city_id: city
     }).results if !category_name.present? && city != 0
-    
 
-    if params[:sort].present? 
-    end 
+    businesses_filter.each do |business|
+      if businesses_search.include?(business.id)
+        businesses_select << business
+      end
+    end if businesses_filter != nil   
 
-    redirect_to action: 'index', businesses: business_filter.to_a, open: open, rate_min: rate_min, rate_max: rate_max, category: category_name, city: city.to_i 
+    redirect_to action: 'index', businesses: businesses_select, open: open, rate_min: rate_min, rate_max: rate_max, category: category_name, city: city.to_i 
+  
   end
-
   
 
 end

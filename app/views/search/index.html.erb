@@ -43,24 +43,21 @@
 	        </ul>
 
 			</div>
-		<!-- 	<div class="col-md-6 text-right">
-				<span class="h6 strong">Sort By</span>
-				<select class="selectpicker" title="Type">
-				  <option>Name</option>
-				  <option>Overate</option>
-				  <option>Relish</option>
-				</select>
-                <button class="btn btn-primary">Sort</button>
-			</div> -->
-            
+	    		<%= form_tag("/search/index", method: "get") do %>
+					<div class="col-md-6 text-right">
+						<span class="h6 strong">Sort By</span>
+						<%= select_tag "sort", options_for_select(["Name", "Rate"]), class: "selectpicker" %>
+						<%= hidden_field_tag :businesses, @businesses.map(&:id) if @businesses != nil%>
+			            <button type="submit" class="btn btn-primary">Sort</button>
+					</div>
+				<% end %>            
 		</div>
 	</div>
 </div>
 
 <section class="filter">
 	<div class="container">
-
-    <%= form_tag("/search/filter", method: "get") do %>
+    	<%= form_tag("/search/filter", method: "get") do %>
 			<div class="row vert-offset-top-6">
 				<div class="col-xs-4">
 					<div class="filter-aside">
@@ -73,13 +70,9 @@
 							<h6 class="strong">Category</h6>
 							<ul class="list-inline brand-ul">
 	              				<% @categories= Category.all.map(&:name) %>
-	              					<% if @businesses == nil %>
-	              						<%= select_tag :category, options_for_select(@categories), include_blank: "Select Category", :required => true ,class: "form-control", require: true %>
+	              					<%= select_tag :category, options_for_select(@categories), include_blank: "Select Category" ,class: "form-control", require: true %>
 
-	              					<% else %>
-	              						<%= select_tag :category, options_for_select(@categories), include_blank: "Select Category" ,class: "form-control", require: true %>
-
-	              					<% end %>
+	              
 							</ul>
 							<h6 class="strong">City</h6>
 							<ul class="list-inline brand-ul">
@@ -118,9 +111,15 @@
 						</div>
 
 						<div class="padding-20 border-bottom text-center filter-button">
-							<button type="submit" class="btn btn-background" style="margin-left:30px">
-								Apply Filter
-							</button>
+						  	<% if @businesses != nil %>
+								<button type="submit" class="btn btn-background" style="margin-left:30px">
+									Apply Filter
+								</button>
+							<% else %>
+							    <button type="submit" class="btn btn-background" style="margin-left:30px;font-color:red" disabled>
+									Apply Filter
+								</button>
+							<% end %>
 						</div>
 
 					</div>
@@ -129,11 +128,9 @@
 
 
 
-				<div class="col-xs-8">
-
-				<% unless @businesses.blank? %>
+		<div class="col-xs-8">
+			<% unless @businesses.blank? %>
 				 <% @businesses.each do |business| %>
-				    <% next if @open && business.open != true %>
 					<div class="col-xs-6">
 						<div class="thumbnails-height">
 					    <% if business.logo.blank? %>
