@@ -5,4 +5,11 @@ class BusinessProduct < ActiveRecord::Base
 	validates :business, presence: true
 	validates :product, presence: true
 	validates :price, presence: true	
+
+	  after_commit :reindex_business
+
+
+  def reindex_business
+    Business.reindex
+  end
 end

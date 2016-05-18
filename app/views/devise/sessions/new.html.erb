@@ -14,6 +14,13 @@
               <div class="clr"><hr /></div>
                       <div class="mail-text">Or sign up using your email address.</div>
 
+              <% flash.each do |key, value| %>
+                <div class="alert alert-success">
+                  <button type="button" class="close" data-dismiss="alert">×</button>
+                  <i class="fa fa-ok-sign"></i><strong><%= value sada%></strong>
+                </div>
+              <% end %>
+
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                   <div class="forms">
                   <label> Email</label>

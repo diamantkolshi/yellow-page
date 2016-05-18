@@ -41,6 +41,7 @@ gem 'jquery-ui-rails'
 gem 'friendly_id'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'active_model_serializers'
 
 
 group :development do

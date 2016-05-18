@@ -49,7 +49,7 @@ class SearchController < ApplicationController
       end
     
     end
-        
+    
   end
 
   def filter 
@@ -84,7 +84,8 @@ class SearchController < ApplicationController
       if businesses_search.include?(business.id)
         businesses_select << business
       end
-    end if businesses_filter != nil   
+    end if businesses_filter != nil
+  
 
     redirect_to action: 'index', businesses: businesses_select, open: open, rate_min: rate_min, rate_max: rate_max, category: category_name, city: city.to_i 
   

@@ -19,7 +19,7 @@
         <abbr title="Hours"> Today</abbr>:
         <% if @business.open == [] %>
             <b style="padding:5px;background-color:#808080;color:white"> UNKNOWN </b>
-        <% elsif @business.open %>
+        <% elsif @business.open  %>
             <b style="padding:5px;background-color:green;color:white"> OPEN </b>
         <% else %>
             <b style="padding:5px;background-color:red;color:white"> CLOSED </b>
@@ -37,7 +37,7 @@
     $(function () {
      
       $("#rateAverage").rateYo({
-        rating: <%= @average %>,
+        rating: <%= @business.average_rate %>,
         readOnly: true
       });
      

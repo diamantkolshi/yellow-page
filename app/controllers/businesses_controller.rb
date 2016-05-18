@@ -17,24 +17,6 @@ class BusinessesController < ApplicationController
   	@business_products = BusinessProduct.all
 
     @rating = Rating.where(business_id: @business.id).order(created_at: :asc)
-    
-    @average = business_rate(@rating)
-  end
-
-  def open
-    @open = Business.all
-  end
-
-  def business_rate(rateable)
-    if rateable != []
-     adv_score = 0
-     rateable.each do |r|
-       adv_score += r.score
-     end
-     adv_score / rateable.count
-    else
-      0
-    end
   end
 
   def aggregations

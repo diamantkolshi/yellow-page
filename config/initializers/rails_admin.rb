@@ -4,7 +4,7 @@ RailsAdmin.config do |config|
   end
   config.current_user_method(&:current_user)
   
-  config.excluded_models = [ BusinessCategory, BusinessAddress, Search , Comment, BusinessProduct]
+  config.excluded_models = [ BusinessCategory, BusinessAddress, Search , Comment, Rating ]
 
 
   config.model 'Business' do

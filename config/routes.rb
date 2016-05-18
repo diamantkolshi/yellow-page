@@ -39,4 +39,25 @@ Rails.application.routes.draw do
       get :autocomplete # <= add this line
     end
   end
+
+ #api
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:show]
+      resources :businesses, only: [:index, :show]
+      resources :comments, only: [:create]
+      resources :homepages, only: [:index]
+      resources :profiles, only: [:index]
+      resources :rating, only: [:create, :update]
+      get "search/filter" => "search#filter"
+      resources :search, only: [:index]
+      resources :suggest_businesses, only: [:create]
+      # resources :sessions, only: [:create, :destroy] 
+
+      devise_scope :user do
+      post 'sessions' => 'sessions#create', :as => 'login'
+      delete 'sessions' => 'sessions#destroy', :as => 'logout'
+      end
+    end
+  end
 end
