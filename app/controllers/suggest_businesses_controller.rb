@@ -7,7 +7,6 @@ class SuggestBusinessesController < ApplicationController
 
     def create
       @suggest_business = SuggestBusiness.new(require_params)
-       asdasd
     	if @suggest_business.save
         SendMailer.business_suggest(require_params).deliver_now
         redirect_to homepage_path
