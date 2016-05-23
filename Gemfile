@@ -13,7 +13,6 @@ gem "jquery-rails"
 gem "neat", "~> 1.7.0"
 gem "newrelic_rpm", ">= 3.9.8"
 gem "normalize-rails", "~> 3.0.0"
-gem "sqlite3"
 gem "puma"
 gem "rack-canonical-host"
 gem "rails", "~> 4.2.0"
@@ -42,7 +41,7 @@ gem 'friendly_id'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'active_model_serializers'
-
+gem 'pg'
 
 group :development do
   gem "quiet_assets"
