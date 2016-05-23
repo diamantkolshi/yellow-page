@@ -43,6 +43,7 @@ gem 'omniauth-twitter'
 gem 'active_model_serializers'
 gem 'pg'
 gem "dotenv-rails"
+gem 'rails_12factor', group: :production
 
 group :development do
   gem "quiet_assets"
