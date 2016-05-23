@@ -42,6 +42,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'active_model_serializers'
 gem 'pg'
+gem "dotenv-rails"
 
 group :development do
   gem "quiet_assets"
@@ -55,7 +56,6 @@ group :development, :test do
   gem "awesome_print"
   gem "bullet"
   gem "bundler-audit", require: false
-  gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "pry-byebug"
   gem "pry-rails"
